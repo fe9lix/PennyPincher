@@ -8,8 +8,8 @@ final public class PennyPincher {
         
     }
     
-    public func createTemplate(points: [CGPoint]) -> PennyPincherTemplate {
-        return PennyPincherTemplate(points: resampleBetweenPoints(points))
+    public func createTemplate(id: String, points: [CGPoint]) -> PennyPincherTemplate {
+        return PennyPincherTemplate(id: id, points: resampleBetweenPoints(points))
     }
     
     public func recognize(points: [CGPoint], templates: [PennyPincherTemplate]) -> (template: PennyPincherTemplate, similarity: CGFloat) {
@@ -21,9 +21,11 @@ final public class PennyPincher {
         for template in templates {
             d = 0.0
             
-            for i in 0...PennyPincher.NumResamplingPoints - 2 {
+            let count = min(c.count, template.points.count)
+            
+            for i in 0...count - 1 {
                 let tp = template.points[i]
-                let cp = points[i]
+                let cp = c[i]
                 
                 d = d + tp.x * cp.x + tp.y * cp.y
                 
