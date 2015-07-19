@@ -1,13 +1,14 @@
 import UIKit
 
+struct GestureViewStroke {
+    let points: [CGPoint]
+}
+
 class GestureView: UIView {
     
-    struct Stroke {
-        let points: [CGPoint]
-    }
-    
-    var strokes = [Stroke]() {
+    var strokes = [GestureViewStroke]() {
         didSet {
+            strokePoints.removeAll(keepCapacity: false)
             setNeedsDisplay()
         }
     }
@@ -70,9 +71,7 @@ class GestureView: UIView {
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         super.touchesEnded(touches, withEvent: event)
         
-        strokes.append(Stroke(points: strokePoints))
-        
-        strokePoints.removeAll(keepCapacity: false)
+        strokes.append(GestureViewStroke(points: strokePoints))
     }
     
     override func touchesCancelled(touches: Set<NSObject>!, withEvent event: UIEvent!) {
@@ -145,6 +144,10 @@ class GestureView: UIView {
         }
         
         samplingPath.stroke()
+    }
+    
+    func clear() {
+        strokes.removeAll(keepCapacity: false)
     }
     
 }
