@@ -8,16 +8,16 @@ final public class PennyPincher {
         
     }
     
-    public func createTemplate(id: String, points: [CGPoint]) -> PennyPincherTemplate {
-        return PennyPincherTemplate(id: id, points: resampleBetweenPoints(points))
+    public class func createTemplate(id: String, points: [CGPoint]) -> PennyPincherTemplate {
+        return PennyPincherTemplate(id: id, points: PennyPincher.resampleBetweenPoints(points))
     }
     
-    public func recognize(points: [CGPoint], templates: [PennyPincherTemplate]) -> (template: PennyPincherTemplate, similarity: CGFloat)? {
+    public class func recognize(points: [CGPoint], templates: [PennyPincherTemplate]) -> (template: PennyPincherTemplate, similarity: CGFloat)? {
         if points.count == 0 || templates.count == 0 {
             return nil
         }
         
-        let c = resampleBetweenPoints(points)
+        let c = PennyPincher.resampleBetweenPoints(points)
         
         if c.count == 0 {
             return nil
@@ -52,7 +52,7 @@ final public class PennyPincher {
         return (t, similarity)
     }
     
-    private func resampleBetweenPoints(var points: [CGPoint]) -> [CGPoint] {
+    private class func resampleBetweenPoints(var points: [CGPoint]) -> [CGPoint] {
         let i = pathLength(points) / CGFloat(PennyPincher.NumResamplingPoints - 1)
         var d: CGFloat = 0.0
         var v = [CGPoint]()
@@ -97,7 +97,7 @@ final public class PennyPincher {
         return v
     }
     
-    private func pathLength(points: [CGPoint]) -> CGFloat {
+    private class func pathLength(points: [CGPoint]) -> CGFloat {
         var d: CGFloat = 0.0
         
         for i in 1..<points.count {
@@ -107,7 +107,7 @@ final public class PennyPincher {
         return d
     }
     
-    private func distanceBetweenPoint(pointA: CGPoint, andPoint pointB: CGPoint) -> CGFloat {
+    private class func distanceBetweenPoint(pointA: CGPoint, andPoint pointB: CGPoint) -> CGFloat {
         let distX = pointA.x - pointB.x
         let distY = pointA.y - pointB.y
         
