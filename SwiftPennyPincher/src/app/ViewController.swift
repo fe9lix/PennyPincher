@@ -29,10 +29,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func didTapRecognize(sender: AnyObject) {
-        let (template, similarity) = pennyPincher.recognize(gestureView.points, templates: templates)
-       
-        let similarityString = String(format: "%.2f", similarity)
-        recognizerResult.text = "Template: \(template.id), Similarity: \(similarityString)"
+        if let (template, similarity) = pennyPincher.recognize(gestureView.points, templates: templates) {
+            let similarityString = String(format: "%.2f", similarity)
+            recognizerResult.text = "Template: \(template.id), Similarity: \(similarityString)"
+        } else {
+            recognizerResult.text = "Could not recognize."
+        }
         
         gestureView.clear()
     }
