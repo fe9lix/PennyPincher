@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DCD6131B1B5C0974000F57E9 /* PennyPincherGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD6131A1B5C0974000F57E9 /* PennyPincherGestureRecognizer.swift */; };
 		DCF8C64E1B5B94620003960C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCF8C64C1B5B94620003960C /* Main.storyboard */; };
 		DCF8C6501B5B94620003960C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCF8C64F1B5B94620003960C /* Images.xcassets */; };
 		DCF8C6531B5B94620003960C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCF8C6511B5B94620003960C /* LaunchScreen.xib */; };
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DCD6131A1B5C0974000F57E9 /* PennyPincherGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PennyPincherGestureRecognizer.swift; sourceTree = "<group>"; };
 		DCF8C6431B5B94620003960C /* SwiftPennyPincher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftPennyPincher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCF8C6471B5B94620003960C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DCF8C64D1B5B94620003960C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			children = (
 				DCF8C66E1B5BA4550003960C /* PennyPincher.swift */,
 				DCF8C6721B5BA4FF0003960C /* PennyPincherTemplate.swift */,
+				DCD6131A1B5C0974000F57E9 /* PennyPincherGestureRecognizer.swift */,
 			);
 			name = pennypincher;
 			path = src/pennypincher;
@@ -243,6 +246,7 @@
 				DCF8C6701B5BA4550003960C /* ViewController.swift in Sources */,
 				DCF8C6711B5BA4550003960C /* PennyPincher.swift in Sources */,
 				DCF8C66F1B5BA4550003960C /* AppDelegate.swift in Sources */,
+				DCD6131B1B5C0974000F57E9 /* PennyPincherGestureRecognizer.swift in Sources */,
 				DCF8C6751B5BB9100003960C /* GestureView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,6 +445,7 @@
 				DCF8C6641B5B94620003960C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DCF8C6651B5B94620003960C /* Build configuration list for PBXNativeTarget "SwiftPennyPincherTests" */ = {
 			isa = XCConfigurationList;
@@ -449,6 +454,7 @@
 				DCF8C6671B5B94620003960C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
