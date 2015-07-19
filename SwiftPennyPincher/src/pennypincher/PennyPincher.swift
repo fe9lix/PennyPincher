@@ -3,7 +3,7 @@ import UIKit
 final public class PennyPincher {
     
     private static let NumResamplingPoints = 16
-   
+    
     public init() {
         
     }
@@ -43,11 +43,18 @@ final public class PennyPincher {
         var v = [CGPoint]()
         var prev = points.first!
         
-        for index in 1..<points.count {
+        var index = 0
+        for _ in points {
+            
+            if index == 0 {
+                index++
+                continue
+            }
+            
             let thisPoint = points[index]
             let prevPoint = points[index - 1]
             
-            let pd = distanceBetweenPoint(thisPoint, and: prevPoint)
+            let pd = distanceBetweenPoint(thisPoint, andPoint: prevPoint)
             
             if (d + pd) >= i {
                 let q = CGPointMake(
@@ -55,18 +62,21 @@ final public class PennyPincher {
                     prevPoint.y + (thisPoint.y - prevPoint.y) * (i - d) / pd)
                 
                 var r = CGPointMake(q.x - prev.x, q.y - prev.y)
-                let rd = distanceBetweenPoint(CGPointZero, and: r)
+                let rd = distanceBetweenPoint(CGPointZero, andPoint: r)
                 r.x = r.x / rd
                 r.y = r.y / rd
                 
                 d = 0.0
                 prev = q
-               
+                
                 v.append(r)
                 points.insert(q, atIndex: index)
+                index++
             } else {
                 d = d + pd
             }
+            
+            index++
         }
         
         return v
@@ -74,15 +84,15 @@ final public class PennyPincher {
     
     private func pathLength(points: [CGPoint]) -> CGFloat {
         var d: CGFloat = 0.0
-       
+        
         for i in 1..<points.count {
-            d = d + distanceBetweenPoint(points[i - 1], and: points[i])
+            d = d + distanceBetweenPoint(points[i - 1], andPoint: points[i])
         }
         
         return d
     }
     
-    private func distanceBetweenPoint(pointA: CGPoint, and pointB: CGPoint) -> CGFloat {
+    private func distanceBetweenPoint(pointA: CGPoint, andPoint pointB: CGPoint) -> CGFloat {
         let distX = pointA.x - pointB.x
         let distY = pointA.y - pointB.y
         
