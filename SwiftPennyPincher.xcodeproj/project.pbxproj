@@ -15,6 +15,7 @@
 		DCF8C6701B5BA4550003960C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF8C66C1B5BA4550003960C /* ViewController.swift */; };
 		DCF8C6711B5BA4550003960C /* PennyPincher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF8C66E1B5BA4550003960C /* PennyPincher.swift */; };
 		DCF8C6731B5BA4FF0003960C /* PennyPincherTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF8C6721B5BA4FF0003960C /* PennyPincherTemplate.swift */; };
+		DCF8C6751B5BB9100003960C /* GestureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF8C6741B5BB9100003960C /* GestureView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		DCF8C66C1B5BA4550003960C /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DCF8C66E1B5BA4550003960C /* PennyPincher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PennyPincher.swift; sourceTree = "<group>"; };
 		DCF8C6721B5BA4FF0003960C /* PennyPincherTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PennyPincherTemplate.swift; sourceTree = "<group>"; };
+		DCF8C6741B5BB9100003960C /* GestureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GestureView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 			children = (
 				DCF8C66B1B5BA4550003960C /* AppDelegate.swift */,
 				DCF8C66C1B5BA4550003960C /* ViewController.swift */,
+				DCF8C6741B5BB9100003960C /* GestureView.swift */,
 			);
 			name = app;
 			path = src/app;
@@ -240,6 +243,7 @@
 				DCF8C6701B5BA4550003960C /* ViewController.swift in Sources */,
 				DCF8C6711B5BA4550003960C /* PennyPincher.swift in Sources */,
 				DCF8C66F1B5BA4550003960C /* AppDelegate.swift in Sources */,
+				DCF8C6751B5BB9100003960C /* GestureView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
