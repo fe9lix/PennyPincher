@@ -1,0 +1,6 @@
+framework module Pods_PennyPincher_Tests {
+  umbrella header "Pods-PennyPincher_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

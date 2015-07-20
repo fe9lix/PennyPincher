@@ -1,0 +1,6 @@
+framework module PennyPincher {
+  umbrella header "PennyPincher-umbrella.h"
+
+  export *
+  module * { export * }
+}
