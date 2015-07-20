@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		DCD6131B1B5C0974000F57E9 /* PennyPincherGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD6131A1B5C0974000F57E9 /* PennyPincherGestureRecognizer.swift */; };
+		DCD6131C1B5D8B6D000F57E9 /* PennyPincher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF8C66E1B5BA4550003960C /* PennyPincher.swift */; };
+		DCD6131D1B5D8B6D000F57E9 /* PennyPincherTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF8C6721B5BA4FF0003960C /* PennyPincherTemplate.swift */; };
+		DCD6131E1B5D8B6D000F57E9 /* PennyPincherGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD6131A1B5C0974000F57E9 /* PennyPincherGestureRecognizer.swift */; };
 		DCF8C64E1B5B94620003960C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCF8C64C1B5B94620003960C /* Main.storyboard */; };
 		DCF8C6501B5B94620003960C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCF8C64F1B5B94620003960C /* Images.xcassets */; };
 		DCF8C6531B5B94620003960C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCF8C6511B5B94620003960C /* LaunchScreen.xib */; };
@@ -255,6 +258,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCD6131E1B5D8B6D000F57E9 /* PennyPincherGestureRecognizer.swift in Sources */,
+				DCD6131D1B5D8B6D000F57E9 /* PennyPincherTemplate.swift in Sources */,
+				DCD6131C1B5D8B6D000F57E9 /* PennyPincher.swift in Sources */,
 				DCF8C65F1B5B94620003960C /* SwiftPennyPincherTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
