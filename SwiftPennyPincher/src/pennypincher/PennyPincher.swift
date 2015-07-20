@@ -8,7 +8,11 @@ final public class PennyPincher {
         
     }
     
-    public class func createTemplate(id: String, points: [CGPoint]) -> PennyPincherTemplate {
+    public class func createTemplate(id: String, points: [CGPoint]) -> PennyPincherTemplate? {
+        if points.count == 0 {
+            return nil
+        }
+        
         return PennyPincherTemplate(id: id, points: PennyPincher.resampleBetweenPoints(points))
     }
     

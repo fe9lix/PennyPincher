@@ -25,7 +25,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func didTapAddTemplate(sender: AnyObject) {
-        pennyPincherGestureRecognizer.templates.append(PennyPincher.createTemplate(templateTextField.text, points: gestureView.points))
+        if let template = PennyPincher.createTemplate(templateTextField.text, points: gestureView.points) {
+            pennyPincherGestureRecognizer.templates.append(template)
+        }
         
         gestureView.clear()
     }
