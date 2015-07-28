@@ -1,6 +1,0 @@
-#include "PennyPincher.xcconfig"
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/PennyPincher" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/PennyPincher"
-OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
-PODS_ROOT = ${SRCROOT}
-SKIP_INSTALL = YES
