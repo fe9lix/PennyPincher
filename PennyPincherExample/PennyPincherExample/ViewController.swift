@@ -1,25 +1,60 @@
-//
-//  ViewController.swift
-//  PennyPincherExample
-//
-//  Created by Felix on 28.07.15.
-//  Copyright © 2015 betriebsraum. All rights reserved.
-//
-
 import UIKit
+import PennyPincher
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UITextFieldDelegate {
+    
+    @IBOutlet weak var gestureView: GestureView!
+    @IBOutlet weak var templateTextField: UITextField!
+    @IBOutlet weak var recognizerResultLabel: UILabel!
+    
+    let pennyPincherGestureRecognizer = PennyPincherGestureRecognizer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        pennyPincherGestureRecognizer.enableMultipleStrokes = true
+        pennyPincherGestureRecognizer.allowedTimeBetweenMultipleStrokes = 0.2
+        pennyPincherGestureRecognizer.cancelsTouchesInView = false
+        pennyPincherGestureRecognizer.addTarget(self, action: "didRecognize:")
+        
+        gestureView.addGestureRecognizer(pennyPincherGestureRecognizer)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
-
-
+    
+    @IBAction func didTapAddTemplate(sender: AnyObject) {
+        if let text = templateTextField.text, template = PennyPincher.createTemplate(text, points: gestureView.points) {
+            pennyPincherGestureRecognizer.templates.append(template)
+        }
+        
+        gestureView.clear()
+    }
+    
+    func didRecognize(pennyPincherGestureRecognizer: PennyPincherGestureRecognizer) {
+        switch pennyPincherGestureRecognizer.state {
+        case .Ended, .Cancelled, .Failed:
+            updateRecognizerResult()
+        default:
+            break
+        }
+    }
+    
+    func updateRecognizerResult() {
+        guard let (template, similarity) = pennyPincherGestureRecognizer.result else {
+            recognizerResultLabel.text = "Could not recognize."
+            return
+        }
+        
+        let similarityString = String(format: "%.2f", similarity)
+        recognizerResultLabel.text = "Template: \(template.id), Similarity: \(similarityString)"
+    }
+   
+    @IBAction func didTapClear(sender: AnyObject) {
+        recognizerResultLabel.text = ""
+        gestureView.clear()
+    }
+    
 }
-

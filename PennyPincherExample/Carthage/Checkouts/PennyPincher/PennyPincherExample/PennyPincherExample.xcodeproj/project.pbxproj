@@ -7,17 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DC81940A1B6822CB00F5464A /* GestureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8194091B6822CB00F5464A /* GestureView.swift */; };
 		DC8A2EBA1B681D7800E8FA66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8A2EB91B681D7800E8FA66 /* AppDelegate.swift */; };
 		DC8A2EBC1B681D7800E8FA66 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8A2EBB1B681D7800E8FA66 /* ViewController.swift */; };
 		DC8A2EBF1B681D7800E8FA66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC8A2EBD1B681D7800E8FA66 /* Main.storyboard */; };
 		DC8A2EC11B681D7800E8FA66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC8A2EC01B681D7800E8FA66 /* Assets.xcassets */; };
 		DC8A2EC41B681D7800E8FA66 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC8A2EC21B681D7800E8FA66 /* LaunchScreen.storyboard */; };
-		DC8A2ED21B6821E400E8FA66 /* PennyPincher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC8A2ED11B6821E400E8FA66 /* PennyPincher.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		DC8194091B6822CB00F5464A /* GestureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GestureView.swift; sourceTree = "<group>"; };
 		DC8A2EB61B681D7800E8FA66 /* PennyPincherExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PennyPincherExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC8A2EB91B681D7800E8FA66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DC8A2EBB1B681D7800E8FA66 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -25,7 +22,6 @@
 		DC8A2EC01B681D7800E8FA66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DC8A2EC31B681D7800E8FA66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DC8A2EC51B681D7800E8FA66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DC8A2ED11B6821E400E8FA66 /* PennyPincher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PennyPincher.framework; path = Carthage/Build/iOS/PennyPincher.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,7 +29,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC8A2ED21B6821E400E8FA66 /* PennyPincher.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,7 +38,6 @@
 		DC8A2EAD1B681D7800E8FA66 = {
 			isa = PBXGroup;
 			children = (
-				DC8A2ED11B6821E400E8FA66 /* PennyPincher.framework */,
 				DC8A2EB81B681D7800E8FA66 /* PennyPincherExample */,
 				DC8A2EB71B681D7800E8FA66 /* Products */,
 			);
@@ -61,7 +55,6 @@
 			isa = PBXGroup;
 			children = (
 				DC8A2EB91B681D7800E8FA66 /* AppDelegate.swift */,
-				DC8194091B6822CB00F5464A /* GestureView.swift */,
 				DC8A2EBB1B681D7800E8FA66 /* ViewController.swift */,
 				DC8A2EBD1B681D7800E8FA66 /* Main.storyboard */,
 				DC8A2EC01B681D7800E8FA66 /* Assets.xcassets */,
@@ -81,7 +74,6 @@
 				DC8A2EB21B681D7800E8FA66 /* Sources */,
 				DC8A2EB31B681D7800E8FA66 /* Frameworks */,
 				DC8A2EB41B681D7800E8FA66 /* Resources */,
-				DC8A2ED31B68220200E8FA66 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -137,24 +129,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		DC8A2ED31B68220200E8FA66 /* Carthage */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/PennyPincher.framework",
-			);
-			name = Carthage;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		DC8A2EB21B681D7800E8FA66 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -162,7 +136,6 @@
 			files = (
 				DC8A2EBC1B681D7800E8FA66 /* ViewController.swift in Sources */,
 				DC8A2EBA1B681D7800E8FA66 /* AppDelegate.swift in Sources */,
-				DC81940A1B6822CB00F5464A /* GestureView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,10 +248,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = PennyPincherExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.betriebsraum.PennyPincherExample;
@@ -290,10 +259,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = PennyPincherExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.betriebsraum.PennyPincherExample;
@@ -320,7 +285,6 @@
 				DC8A2ECA1B681D7800E8FA66 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
