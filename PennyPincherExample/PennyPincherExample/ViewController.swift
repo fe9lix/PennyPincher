@@ -7,7 +7,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var templateTextField: UITextField!
     @IBOutlet weak var recognizerResultLabel: UILabel!
     
-    let pennyPincherGestureRecognizer = PennyPincherGestureRecognizer()
+    private let pennyPincherGestureRecognizer = PennyPincherGestureRecognizer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +42,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func updateRecognizerResult() {
+    private func updateRecognizerResult() {
         guard let (template, similarity) = pennyPincherGestureRecognizer.result else {
             recognizerResultLabel.text = "Could not recognize."
             return
