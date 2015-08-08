@@ -73,7 +73,7 @@ let template = PennyPincher.createTemplate("templateID", points: points)
 pennyPincherGestureRecognizer.templates.append(template)
 ```
 
-Templates could be serialized and saved to disk and then loaded again into memory when the application launches. PennyPincher works pretty well with only one template per geture (`id`) but, depending on your use case, you can increase its accuracy by adding more for each gesture.
+Templates could be serialized and saved to disk and then loaded again into memory when the application launches. PennyPincher works pretty well with only one template per gesture (`id`) but, depending on your use case, you can increase its accuracy by adding more for each gesture.
 
 ## Author
 
