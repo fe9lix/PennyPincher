@@ -5,7 +5,7 @@
     <title>PennyPincher by fe9lix</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
@@ -96,13 +96,13 @@ view<span class="pl-k">.</span>addGestureRecognizer(pennyPincherGestureRecognize
 
 <p>The target-action pair is executed for state changes triggered by the recognizer. You can use the <code>state</code> property to react accordingly in the UI. The <code>result</code> property returns a tuple consisting of the recognized <code>PennyPincherTemplate</code> and CGFloat value indicating the similarity. For example:</p>
 
-<div class="highlight highlight-swift"><pre>guard <span class="pl-k">let</span> (template, similarity) <span class="pl-k">=</span> pennyPincherGestureRecognizer<span class="pl-k">.</span>result <span class="pl-k">else</span> {
-    print(<span class="pl-s"><span class="pl-pds">"</span>Could not recognize.<span class="pl-pds">"</span></span>)
+<div class="highlight highlight-swift"><pre><span class="pl-k">guard</span> <span class="pl-k">let</span> (template, similarity) <span class="pl-k">=</span> pennyPincherGestureRecognizer<span class="pl-k">.</span>result <span class="pl-k">else</span> {
+    <span class="pl-c1">print</span>(<span class="pl-s"><span class="pl-pds">"</span>Could not recognize.<span class="pl-pds">"</span></span>)
     <span class="pl-k">return</span>
 }
 
 <span class="pl-k">let</span> similarityString <span class="pl-k">=</span> <span class="pl-c1">String</span>(format: <span class="pl-s"><span class="pl-pds">"</span>%.2f<span class="pl-pds">"</span></span>, similarity)
-print(<span class="pl-s"><span class="pl-pds">"</span>Template: <span class="pl-pse">\(</span><span class="pl-s1">template<span class="pl-k">.</span>id</span><span class="pl-pse">)</span>, Similarity: <span class="pl-pse">\(</span><span class="pl-s1">similarityString</span><span class="pl-pse">)</span><span class="pl-pds">"</span></span>)</pre></div>
+<span class="pl-c1">print</span>(<span class="pl-s"><span class="pl-pds">"</span>Template: <span class="pl-pse">\(</span><span class="pl-s1">template<span class="pl-k">.</span>id</span><span class="pl-pse">)</span>, Similarity: <span class="pl-pse">\(</span><span class="pl-s1">similarityString</span><span class="pl-pse">)</span><span class="pl-pds">"</span></span>)</pre></div>
 
 <p>You can add and remove templates by modifying the <code>templates</code> array property of the recognizer. The <code>PennyPincher</code> class provides a static method to create new templates of type <code>PennyPincherTemplate</code> (a struct). Required parameters are the <code>id</code> (a unique string) and <code>points</code> (an array of CGPoints).</p>
 
@@ -111,7 +111,7 @@ print(<span class="pl-s"><span class="pl-pds">"</span>Template: <span class="pl-
 <div class="highlight highlight-swift"><pre><span class="pl-k">let</span> template <span class="pl-k">=</span> PennyPincher<span class="pl-k">.</span>createTemplate(<span class="pl-s"><span class="pl-pds">"</span>templateID<span class="pl-pds">"</span></span>, points: points)
 pennyPincherGestureRecognizer<span class="pl-k">.</span>templates<span class="pl-k">.</span>append(template)</pre></div>
 
-<p>Templates could be serialized and saved to disk and then loaded again into memory when the application launches. PennyPincher works pretty well with only one template per geture (<code>id</code>) but, depending on your use case, you can increase its accuracy by adding more for each gesture.</p>
+<p>Templates could be serialized and saved to disk and then loaded again into memory when the application launches. PennyPincher works pretty well with only one template per gesture (<code>id</code>) but, depending on your use case, you can increase its accuracy by adding more for each gesture.</p>
 
 <h2>
 <a id="author" class="anchor" href="#author" aria-hidden="true"><span class="octicon octicon-link"></span></a>Author</h2>
@@ -134,4 +134,3 @@ pennyPincherGestureRecognizer<span class="pl-k">.</span>templates<span class="pl
   
   </body>
 </html>
-
