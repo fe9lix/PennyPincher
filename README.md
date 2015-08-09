@@ -5,7 +5,7 @@
 
 # PennyPincher
 
-PennyPincher is a fast template-based gesture recognizer, developed by Eugene Taranta and Joseph LaViola (full paper reference below). The algorithm is well-suited for mobile applications since it is both fast and accurate and, as shown in the evaluation by the authors, outperforms other recognizers. This project provides a Swift implementation of PennyPincher and shows its usage in a simple example project. Also, the framework contains a UIGestureRecognizer subclass that integrates well into the existing gesture recognition framework of iOS.
+*Penny Pincher* is a fast template-based gesture recognizer, developed by Eugene Taranta and Joseph LaViola (full paper reference below). The algorithm is well-suited for mobile applications since it is both fast and accurate and, as shown in the evaluation by the authors, outperforms other recognizers. This project provides a Swift implementation of *Penny Pincher* and shows its usage in a simple example project. Also, the framework contains a UIGestureRecognizer subclass that integrates well into the existing gesture recognition framework of iOS.
 
 Here's the full reference for the paper:
 
