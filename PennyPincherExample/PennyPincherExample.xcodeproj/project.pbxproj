@@ -13,7 +13,7 @@
 		DC8A2EBF1B681D7800E8FA66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC8A2EBD1B681D7800E8FA66 /* Main.storyboard */; };
 		DC8A2EC11B681D7800E8FA66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC8A2EC01B681D7800E8FA66 /* Assets.xcassets */; };
 		DC8A2EC41B681D7800E8FA66 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC8A2EC21B681D7800E8FA66 /* LaunchScreen.storyboard */; };
-		DC8A2ED21B6821E400E8FA66 /* PennyPincher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC8A2ED11B6821E400E8FA66 /* PennyPincher.framework */; };
+		DCCE97AF1C270A6E00006354 /* PennyPincher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCE97AE1C270A6E00006354 /* PennyPincher.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		DC8A2EC01B681D7800E8FA66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DC8A2EC31B681D7800E8FA66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DC8A2EC51B681D7800E8FA66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DC8A2ED11B6821E400E8FA66 /* PennyPincher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PennyPincher.framework; path = Carthage/Build/iOS/PennyPincher.framework; sourceTree = "<group>"; };
+		DCCE97AE1C270A6E00006354 /* PennyPincher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PennyPincher.framework; path = Carthage/Build/iOS/PennyPincher.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,7 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC8A2ED21B6821E400E8FA66 /* PennyPincher.framework in Frameworks */,
+				DCCE97AF1C270A6E00006354 /* PennyPincher.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,7 +43,7 @@
 		DC8A2EAD1B681D7800E8FA66 = {
 			isa = PBXGroup;
 			children = (
-				DC8A2ED11B6821E400E8FA66 /* PennyPincher.framework */,
+				DCCE97AE1C270A6E00006354 /* PennyPincher.framework */,
 				DC8A2EB81B681D7800E8FA66 /* PennyPincherExample */,
 				DC8A2EB71B681D7800E8FA66 /* Products */,
 			);
