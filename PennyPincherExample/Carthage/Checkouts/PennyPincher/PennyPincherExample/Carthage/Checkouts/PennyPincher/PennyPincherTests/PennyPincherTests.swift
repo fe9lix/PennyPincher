@@ -66,7 +66,7 @@ class PennyPincherTests: XCTestCase {
         }
     }
     
-    func testPerformanceExample() {
+    func testRecognitionPerformance() {
         let points = templatePoints()
         let templates = randomTemplates(1000)
         
