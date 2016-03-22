@@ -47,7 +47,7 @@ public class PennyPincherGestureRecognizer: UIGestureRecognizer {
         if enableMultipleStrokes {
             timer = NSTimer.scheduledTimerWithTimeInterval(allowedTimeBetweenMultipleStrokes,
                 target: self,
-                selector: "timerDidFire:",
+                selector: #selector(timerDidFire(_:)),
                 userInfo: nil,
                 repeats: false)
         } else {
