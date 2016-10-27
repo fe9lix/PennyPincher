@@ -26,7 +26,7 @@ Recommended installation options are via Carthage or manual installation.
 ### Carthage:
 PennyPincher supports installation via [Carthage](https://github.com/Carthage/Carthage):
 
-- Add the following line to your Cartfile: `github "fe9lix/PennyPincher" >= 1.0`
+- Add the following line to your Cartfile: `github "fe9lix/PennyPincher" >= 1.1`
 - Run `carthage update`
 
 ### Manual:
