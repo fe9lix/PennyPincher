@@ -10,7 +10,6 @@ import XCTest
 @testable import PennyPincher
 
 class PennyPincherTests: XCTestCase {
-    
     override func setUp() {
         super.setUp()
     }
@@ -58,7 +57,7 @@ class PennyPincherTests: XCTestCase {
         let points = templatePoints()
         let template = PennyPincher.createTemplate("e", points: points)
         
-        if let template = template, (foundTemplate, similarity) = PennyPincher.recognize(points, templates: [template]) {
+        if let template = template, let (foundTemplate, similarity) = PennyPincher.recognize(points, templates: [template]) {
             XCTAssertEqual(foundTemplate.id, template.id)
             XCTAssertEqualWithAccuracy(similarity, 12.0, accuracy: 0.1)
         } else {
@@ -70,14 +69,14 @@ class PennyPincherTests: XCTestCase {
         let points = templatePoints()
         let templates = randomTemplates(1000)
         
-        self.measureBlock() {
-            PennyPincher.recognize(points, templates: templates)
+        self.measure() {
+            _ = PennyPincher.recognize(points, templates: templates)
         }
     }
     
     // MARK: Helper functions
     
-    func randomTemplates(count: Int) -> [PennyPincherTemplate] {
+    private func randomTemplates(_ count: Int) -> [PennyPincherTemplate] {
         var templates = [PennyPincherTemplate]()
         let points = templatePoints()
         
@@ -90,52 +89,52 @@ class PennyPincherTests: XCTestCase {
         return templates
     }
     
-    func templatePoints() -> [CGPoint] {
+    private func templatePoints() -> [CGPoint] {
         return [
-            CGPointMake(137.0, 284.0),
-            CGPointMake(142.0, 281.0),
-            CGPointMake(150.5, 276.0),
-            CGPointMake(166.0, 268.0),
-            CGPointMake(183.0, 257.5),
-            CGPointMake(207.5, 244.0),
-            CGPointMake(229.5, 231.0),
-            CGPointMake(249.0, 218.0),
-            CGPointMake(266.0, 204.0),
-            CGPointMake(277.5, 192.5),
-            CGPointMake(286.0, 181.0),
-            CGPointMake(291.5, 172.0),
-            CGPointMake(295.0, 163.0),
-            CGPointMake(296.5, 153.0),
-            CGPointMake(297.0, 143.5),
-            CGPointMake(297.0, 134.5),
-            CGPointMake(294.0, 126.0),
-            CGPointMake(287.5, 118.5),
-            CGPointMake(276.0, 111.5),
-            CGPointMake(258.5, 107.0),
-            CGPointMake(234.5, 106.5),
-            CGPointMake(210.5, 107.5),
-            CGPointMake(187.0, 117.5),
-            CGPointMake(163.0, 134.5),
-            CGPointMake(136.5, 161.5),
-            CGPointMake(115.0, 192.0),
-            CGPointMake(98.0, 227.5),
-            CGPointMake(86.5, 266.0),
-            CGPointMake(79.5, 304.5),
-            CGPointMake(79.0, 342.5),
-            CGPointMake(79.5, 372.0),
-            CGPointMake(91.5, 399.5),
-            CGPointMake(112.0, 420.5),
-            CGPointMake(144.5, 433.5),
-            CGPointMake(179.5, 435.0),
-            CGPointMake(216.5, 429.0),
-            CGPointMake(251.5, 410.5),
-            CGPointMake(280.5, 388.5),
-            CGPointMake(300.0, 370.5),
-            CGPointMake(312.5, 356.0)
+            CGPoint(x: 137.0, y: 284.0),
+            CGPoint(x: 142.0, y: 281.0),
+            CGPoint(x: 150.5, y: 276.0),
+            CGPoint(x: 166.0, y: 268.0),
+            CGPoint(x: 183.0, y: 257.5),
+            CGPoint(x: 207.5, y: 244.0),
+            CGPoint(x: 229.5, y: 231.0),
+            CGPoint(x: 249.0, y: 218.0),
+            CGPoint(x: 266.0, y: 204.0),
+            CGPoint(x: 277.5, y: 192.5),
+            CGPoint(x: 286.0, y: 181.0),
+            CGPoint(x: 291.5, y: 172.0),
+            CGPoint(x: 295.0, y: 163.0),
+            CGPoint(x: 296.5, y: 153.0),
+            CGPoint(x: 297.0, y: 143.5),
+            CGPoint(x: 297.0, y: 134.5),
+            CGPoint(x: 294.0, y: 126.0),
+            CGPoint(x: 287.5, y: 118.5),
+            CGPoint(x: 276.0, y: 111.5),
+            CGPoint(x: 258.5, y: 107.0),
+            CGPoint(x: 234.5, y: 106.5),
+            CGPoint(x: 210.5, y: 107.5),
+            CGPoint(x: 187.0, y: 117.5),
+            CGPoint(x: 163.0, y: 134.5),
+            CGPoint(x: 136.5, y: 161.5),
+            CGPoint(x: 115.0, y: 192.0),
+            CGPoint(x: 98.0, y: 227.5),
+            CGPoint(x: 86.5, y: 266.0),
+            CGPoint(x: 79.5, y: 304.5),
+            CGPoint(x: 79.0, y: 342.5),
+            CGPoint(x: 79.5, y: 372.0),
+            CGPoint(x: 91.5, y: 399.5),
+            CGPoint(x: 112.0, y: 420.5),
+            CGPoint(x: 144.5, y: 433.5),
+            CGPoint(x: 179.5, y: 435.0),
+            CGPoint(x: 216.5, y: 429.0),
+            CGPoint(x: 251.5, y: 410.5),
+            CGPoint(x: 280.5, y: 388.5),
+            CGPoint(x: 300.0, y: 370.5),
+            CGPoint(x: 312.5, y: 356.0)
         ]
     }
     
-    func shufflePoints(points: [CGPoint]) -> [CGPoint] {
+    private func shufflePoints(_ points: [CGPoint]) -> [CGPoint] {
         let count = points.count
         var newPoints = points
         
@@ -143,10 +142,9 @@ class PennyPincherTests: XCTestCase {
             let randNum = Int(arc4random_uniform(UInt32(count - i)))
             let tmp = points[i]
             newPoints[i] = newPoints[randNum]
-            newPoints[randNum] = tmp;
+            newPoints[randNum] = tmp
         }
         
-        return newPoints;
+        return newPoints
     }
-    
 }

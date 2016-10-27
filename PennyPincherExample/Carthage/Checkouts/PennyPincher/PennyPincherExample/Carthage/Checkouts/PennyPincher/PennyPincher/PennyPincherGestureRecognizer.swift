@@ -2,50 +2,47 @@ import UIKit
 import UIKit.UIGestureRecognizerSubclass
 
 public class PennyPincherGestureRecognizer: UIGestureRecognizer {
-    
     public var enableMultipleStrokes: Bool = true
-    public var allowedTimeBetweenMultipleStrokes: NSTimeInterval = 0.2
+    public var allowedTimeBetweenMultipleStrokes: TimeInterval = 0.2
     public var templates = [PennyPincherTemplate]()
     
     private(set) public var result: (template: PennyPincherTemplate, similarity: CGFloat)?
     
-    private let pennyPincher = PennyPincher()
-    private var points = [CGPoint]()
-    private var timer: NSTimer?
+    private(set) var pennyPincher = PennyPincher()
+    private(set) var points = [CGPoint]()
+    private(set) var timer: Timer?
     
     public override func reset() {
         super.reset()
        
         invalidateTimer()
-        
-        points.removeAll(keepCapacity: false)
-        
+        points.removeAll(keepingCapacity: false)
         result = nil
     }
     
-    public override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent) {
+    public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
         invalidateTimer()
         
         if let touch = touches.first {
-            points.append(touch.locationInView(view))
+            points.append(touch.location(in: view))
         }
 
-        if state == .Possible {
-            state = .Began
+        if state == .possible {
+            state = .began
         }
     }
     
-    override public func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent) {
+    override public func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent) {
         if let touch = touches.first {
-            points.append(touch.locationInView(view))
+            points.append(touch.location(in: view))
         }
         
-        state = .Changed
+        state = .changed
     }
     
-    override public func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent) {
+    override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent) {
         if enableMultipleStrokes {
-            timer = NSTimer.scheduledTimerWithTimeInterval(allowedTimeBetweenMultipleStrokes,
+            timer = Timer.scheduledTimer(timeInterval: allowedTimeBetweenMultipleStrokes,
                 target: self,
                 selector: #selector(timerDidFire(_:)),
                 userInfo: nil,
@@ -55,19 +52,19 @@ public class PennyPincherGestureRecognizer: UIGestureRecognizer {
         }
     }
     
-    override public func touchesCancelled(touches: Set<UITouch>, withEvent event: UIEvent) {
-        points.removeAll(keepCapacity: false)
+    override public func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent) {
+        points.removeAll(keepingCapacity: false)
         
-        state = .Cancelled
+        state = .cancelled
     }
     
     private func recognize() {
         result = PennyPincher.recognize(points, templates: templates)
         
-        state = result != nil ? .Ended : .Failed
+        state = result != nil ? .ended : .failed
     }
     
-    func timerDidFire(timer: NSTimer) {
+    @objc private func timerDidFire(_ timer: Timer) {
         recognize()
     }
     
@@ -75,5 +72,4 @@ public class PennyPincherGestureRecognizer: UIGestureRecognizer {
         timer?.invalidate()
         timer = nil
     }
-    
 }
