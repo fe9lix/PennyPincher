@@ -22,10 +22,10 @@
       <p><a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible"></a>
 <a href="http://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a>
 <a href="https://github.com/fe9lix/PennyPincher"><img src="https://img.shields.io/badge/platform-iOS-lightgrey.svg?style=flat" alt="Platform"></a>
-<a href="https://developer.apple.com/swift/blog/?id=29"><img src="https://img.shields.io/badge/swift-2.0-orange.svg" alt="Swift"></a></p>
+<a href="https://developer.apple.com/swift/blog/?id=29"><img src="https://img.shields.io/badge/swift-3.0-orange.svg" alt="Swift"></a></p>
 
 <h1>
-<a id="pennypincher" class="anchor" href="#pennypincher" aria-hidden="true"><span class="octicon octicon-link"></span></a>PennyPincher</h1>
+<a id="pennypincher" class="anchor" href="#pennypincher" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PennyPincher</h1>
 
 <p><em>Penny Pincher</em> is a fast template-based gesture recognizer, developed by Eugene Taranta and Joseph LaViola (full paper reference below). The algorithm is well-suited for mobile applications since it is both fast and accurate and, as shown in the evaluation by the authors, outperforms other recognizers. This project provides a Swift implementation of <em>Penny Pincher</em> and shows its usage in a simple example project. Also, the framework contains a UIGestureRecognizer subclass that integrates well into the existing gesture recognition framework of iOS.</p>
 
@@ -36,34 +36,35 @@
 </blockquote>
 
 <h2>
-<a id="demo" class="anchor" href="#demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demo</h2>
+<a id="demo" class="anchor" href="#demo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Demo</h2>
 
 <p><img src="https://github.com/fe9lix/PennyPincher/raw/gh-pages/images/pennypincher.gif?raw=true" alt="PennyPincher"></p>
 
 <h2>
-<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Requirements</h2>
 
-<p><em>&gt;=</em> iOS 8, Xcode 7, Swift 2.0</p>
+<p>v1.1.0: <em>&gt;=</em> iOS 9, Xcode 8, Swift 3.0<br>
+v1.0.3: <em>&gt;=</em> iOS 8, Xcode 7, Swift 2.0</p>
 
 <h2>
-<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
 
 <p>Recommended installation options are via Carthage or manual installation.</p>
 
 <h3>
-<a id="carthage" class="anchor" href="#carthage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Carthage:</h3>
+<a id="carthage" class="anchor" href="#carthage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Carthage:</h3>
 
 <p>PennyPincher supports installation via <a href="https://github.com/Carthage/Carthage">Carthage</a>:</p>
 
 <ul>
-<li>Add the following line to your Cartfile: <code>github "fe9lix/PennyPincher" &gt;= 1.0</code>
+<li>Add the following line to your Cartfile: <code>github "fe9lix/PennyPincher" &gt;= 1.1</code>
 </li>
 <li>Run <code>carthage update</code>
 </li>
 </ul>
 
 <h3>
-<a id="manual" class="anchor" href="#manual" aria-hidden="true"><span class="octicon octicon-link"></span></a>Manual:</h3>
+<a id="manual" class="anchor" href="#manual" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Manual:</h3>
 
 <ul>
 <li>Drag the folder <code>PennyPincherExample/Carthage/Build/iOS/PennyPincher.framework</code> into your Xcode project and select "Copy items if needed".</li>
@@ -71,17 +72,17 @@
 </ul>
 
 <h2>
-<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
 
 <p>Please see the <code>ViewController</code> of the example project on how to use PennyPincher. Although you can use the <code>PennyPincher</code> class directly, the easiest way is to instantiate its gesture recognizer class, configure it, and add it to a view:</p>
 
-<div class="highlight highlight-swift"><pre><span class="pl-k">let</span> pennyPincherGestureRecognizer <span class="pl-k">=</span> PennyPincherGestureRecognizer()
-pennyPincherGestureRecognizer<span class="pl-k">.</span>enableMultipleStrokes <span class="pl-k">=</span> <span class="pl-c1">true</span>
-pennyPincherGestureRecognizer<span class="pl-k">.</span>allowedTimeBetweenMultipleStrokes <span class="pl-k">=</span> <span class="pl-c1">0</span><span class="pl-k">.</span><span class="pl-c1">2</span>
-pennyPincherGestureRecognizer<span class="pl-k">.</span>cancelsTouchesInView <span class="pl-k">=</span> <span class="pl-c1">false</span>
-pennyPincherGestureRecognizer<span class="pl-k">.</span>addTarget(<span class="pl-k">self</span>, action: <span class="pl-s"><span class="pl-pds">"</span>didRecognize:<span class="pl-pds">"</span></span>)
+<div class="highlight highlight-source-swift"><pre><span class="pl-k">let</span> pennyPincherGestureRecognizer <span class="pl-k">=</span> <span class="pl-c1">PennyPincherGestureRecognizer</span>()
+pennyPincherGestureRecognizer.<span class="pl-smi">enableMultipleStrokes</span> <span class="pl-k">=</span> <span class="pl-c1">true</span>
+pennyPincherGestureRecognizer.<span class="pl-smi">allowedTimeBetweenMultipleStrokes</span> <span class="pl-k">=</span> <span class="pl-c1">0.2</span>
+pennyPincherGestureRecognizer.<span class="pl-smi">cancelsTouchesInView</span> <span class="pl-k">=</span> <span class="pl-c1">false</span>
+pennyPincherGestureRecognizer.<span class="pl-c1">addTarget</span>(<span class="pl-v">self</span>, <span class="pl-c1">action</span>: <span class="pl-s"><span class="pl-pds">"</span>didRecognize:<span class="pl-pds">"</span></span>)
 
-view<span class="pl-k">.</span>addGestureRecognizer(pennyPincherGestureRecognizer)</pre></div>
+view.<span class="pl-c1">addGestureRecognizer</span>(pennyPincherGestureRecognizer)</pre></div>
 
 <p>In the code above, the following properties are set:</p>
 
@@ -96,30 +97,30 @@ view<span class="pl-k">.</span>addGestureRecognizer(pennyPincherGestureRecognize
 
 <p>The target-action pair is executed for state changes triggered by the recognizer. You can use the <code>state</code> property to react accordingly in the UI. The <code>result</code> property returns a tuple consisting of the recognized <code>PennyPincherTemplate</code> and CGFloat value indicating the similarity. For example:</p>
 
-<div class="highlight highlight-swift"><pre><span class="pl-k">guard</span> <span class="pl-k">let</span> (template, similarity) <span class="pl-k">=</span> pennyPincherGestureRecognizer<span class="pl-k">.</span>result <span class="pl-k">else</span> {
+<div class="highlight highlight-source-swift"><pre><span class="pl-k">guard</span> <span class="pl-k">let</span> (template, similarity) <span class="pl-k">=</span> pennyPincherGestureRecognizer.<span class="pl-smi">result</span> <span class="pl-k">else</span> {
     <span class="pl-c1">print</span>(<span class="pl-s"><span class="pl-pds">"</span>Could not recognize.<span class="pl-pds">"</span></span>)
     <span class="pl-k">return</span>
 }
 
-<span class="pl-k">let</span> similarityString <span class="pl-k">=</span> <span class="pl-c1">String</span>(format: <span class="pl-s"><span class="pl-pds">"</span>%.2f<span class="pl-pds">"</span></span>, similarity)
-<span class="pl-c1">print</span>(<span class="pl-s"><span class="pl-pds">"</span>Template: <span class="pl-pse">\(</span><span class="pl-s1">template<span class="pl-k">.</span>id</span><span class="pl-pse">)</span>, Similarity: <span class="pl-pse">\(</span><span class="pl-s1">similarityString</span><span class="pl-pse">)</span><span class="pl-pds">"</span></span>)</pre></div>
+<span class="pl-k">let</span> similarityString <span class="pl-k">=</span> <span class="pl-c1">String</span>(<span class="pl-c1">format</span>: <span class="pl-s"><span class="pl-pds">"</span>%.2f<span class="pl-pds">"</span></span>, similarity)
+<span class="pl-c1">print</span>(<span class="pl-s"><span class="pl-pds">"</span>Template: <span class="pl-pse">\(</span><span class="pl-s1">template.<span class="pl-smi">id</span>)</span>, Similarity: <span class="pl-pse">\(</span><span class="pl-s1">similarityString)</span><span class="pl-pds">"</span></span>)</pre></div>
 
 <p>You can add and remove templates by modifying the <code>templates</code> array property of the recognizer. The <code>PennyPincher</code> class provides a static method to create new templates of type <code>PennyPincherTemplate</code> (a struct). Required parameters are the <code>id</code> (a unique string) and <code>points</code> (an array of CGPoints).</p>
 
 <p>For example:</p>
 
-<div class="highlight highlight-swift"><pre><span class="pl-k">let</span> template <span class="pl-k">=</span> PennyPincher<span class="pl-k">.</span>createTemplate(<span class="pl-s"><span class="pl-pds">"</span>templateID<span class="pl-pds">"</span></span>, points: points)
-pennyPincherGestureRecognizer<span class="pl-k">.</span>templates<span class="pl-k">.</span>append(template)</pre></div>
+<div class="highlight highlight-source-swift"><pre><span class="pl-k">let</span> template <span class="pl-k">=</span> PennyPincher.<span class="pl-c1">createTemplate</span>(<span class="pl-s"><span class="pl-pds">"</span>templateID<span class="pl-pds">"</span></span>, <span class="pl-c1">points</span>: points)
+pennyPincherGestureRecognizer.<span class="pl-smi">templates</span>.<span class="pl-c1">append</span>(template)</pre></div>
 
 <p>Templates could be serialized and saved to disk and then loaded again into memory when the application launches. PennyPincher works pretty well with only one template per gesture (<code>id</code>) but, depending on your use case, you can increase its accuracy by adding more for each gesture.</p>
 
 <h2>
-<a id="author" class="anchor" href="#author" aria-hidden="true"><span class="octicon octicon-link"></span></a>Author</h2>
+<a id="author" class="anchor" href="#author" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Author</h2>
 
 <p>fe9lix</p>
 
 <h2>
-<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
 
 <p>PennyPincher is available under the MIT license. See the LICENSE file for more info.</p>
 
