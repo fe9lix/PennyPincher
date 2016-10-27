@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/PennyPincher-Swift.h</key>
 		<data>
-		65nvNwf31VrGl6zrdshgURBn1ps=
+		tDD2YiK7Wjq02o+j9qxZGxVGVAU=
 		</data>
 		<key>Headers/PennyPincher.h</key>
 		<data>
@@ -14,23 +14,23 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		DTwquQcSNcxAVynwoxQEopKYzLM=
+		QCWP5eIPSA5/OWI9t064hnb4wpg=
 		</data>
 		<key>Modules/PennyPincher.swiftmodule/arm.swiftdoc</key>
 		<data>
-		kQBWik04xRe2WsUX9KW4Vu5khng=
+		71EJ+CrN/yz5gh2uhd2D9kELEP0=
 		</data>
 		<key>Modules/PennyPincher.swiftmodule/arm.swiftmodule</key>
 		<data>
-		SZ2viXQj/AiHCEC8iLsYCtb0dCo=
+		8so4A1DMya3PgPIuHNxonKjZqCY=
 		</data>
 		<key>Modules/PennyPincher.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		eM0+AXjlA3fdiB8bz4EirX1e1Fw=
+		Dp6GdztFjGRjgAiwHffBD4fQmiE=
 		</data>
 		<key>Modules/PennyPincher.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		8XxUsX8Woe2/wIaB9Ly7oQ0aFRA=
+		cny7DmnlAha7iQK18i3aT3dnni4=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -41,7 +41,7 @@
 	<dict>
 		<key>Headers/PennyPincher-Swift.h</key>
 		<data>
-		65nvNwf31VrGl6zrdshgURBn1ps=
+		tDD2YiK7Wjq02o+j9qxZGxVGVAU=
 		</data>
 		<key>Headers/PennyPincher.h</key>
 		<data>
@@ -49,19 +49,19 @@
 		</data>
 		<key>Modules/PennyPincher.swiftmodule/arm.swiftdoc</key>
 		<data>
-		kQBWik04xRe2WsUX9KW4Vu5khng=
+		71EJ+CrN/yz5gh2uhd2D9kELEP0=
 		</data>
 		<key>Modules/PennyPincher.swiftmodule/arm.swiftmodule</key>
 		<data>
-		SZ2viXQj/AiHCEC8iLsYCtb0dCo=
+		8so4A1DMya3PgPIuHNxonKjZqCY=
 		</data>
 		<key>Modules/PennyPincher.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		eM0+AXjlA3fdiB8bz4EirX1e1Fw=
+		Dp6GdztFjGRjgAiwHffBD4fQmiE=
 		</data>
 		<key>Modules/PennyPincher.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		8XxUsX8Woe2/wIaB9Ly7oQ0aFRA=
+		cny7DmnlAha7iQK18i3aT3dnni4=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>

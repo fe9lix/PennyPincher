@@ -5,10 +5,9 @@ struct GestureViewStroke {
 }
 
 class GestureView: UIView {
-    
     var strokes = [GestureViewStroke]() {
         didSet {
-            strokePoints.removeAll(keepCapacity: false)
+            strokePoints.removeAll(keepingCapacity: false)
             setNeedsDisplay()
         }
     }
@@ -21,7 +20,7 @@ class GestureView: UIView {
     
     private var strokePoints = [CGPoint]()
     
-    var strokeColor: UIColor = UIColor.blackColor() {
+    var strokeColor: UIColor = UIColor.black {
         didSet {
             setNeedsDisplay()
         }
@@ -44,6 +43,8 @@ class GestureView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        
+        setup()
     }
     
     override func awakeFromNib() {
@@ -56,41 +57,41 @@ class GestureView: UIView {
         path.lineWidth = 2.0
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        super.touchesBegan(touches, withEvent: event)
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
         
         addStrokePointFromTouches(touches)
     }
     
-    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?)  {
-        super.touchesMoved(touches, withEvent: event)
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?)  {
+        super.touchesMoved(touches, with: event)
         
         addStrokePointFromTouches(touches)
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        super.touchesEnded(touches, withEvent: event)
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
         
         strokes.append(GestureViewStroke(points: strokePoints))
     }
     
-    override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
-        super.touchesCancelled(touches, withEvent: event)
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesCancelled(touches, with: event)
         
-        strokePoints.removeAll(keepCapacity: false)
+        strokePoints.removeAll(keepingCapacity: false)
     }
     
-    private func addStrokePointFromTouches(touches: Set<NSObject>) {
-        if let touch = touches.first as? UITouch {
-            let point = touch.locationInView(self)
-            strokePoints.append(point)
-            
-            setNeedsDisplay()
-        }
+    private func addStrokePointFromTouches(_ touches: Set<NSObject>) {
+        guard let touch = touches.first as? UITouch else { return }
+        
+        let point = touch.location(in: self)
+        strokePoints.append(point)
+        
+        setNeedsDisplay()
     }
     
-    override func drawRect(rect: CGRect) {
-        super.drawRect(rect)
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
         
         path.removeAllPoints()
         
@@ -108,38 +109,42 @@ class GestureView: UIView {
         }
     }
     
-    private func addStrokePoint(points: [CGPoint]) {
-        if points.count < 3 {
-            return
-        }
+    fileprivate func addStrokePoint(_ points: [CGPoint]) {
+        guard points.count >= 3 else { return }
         
-        path.moveToPoint(points.first!)
+        path.move(to: points.first!)
         
         for i in 1...points.count - 2 {
             let point = points[i]
             let nextPoint = points[i + 1]
-            let endPoint = CGPointMake(
-                (point.x + nextPoint.x) / 2,
-                (point.y + nextPoint.y) / 2)
+            let endPoint = CGPoint(
+                x: (point.x + nextPoint.x) / 2,
+                y: (point.y + nextPoint.y) / 2)
             
-            path.addQuadCurveToPoint(endPoint, controlPoint: point)
+            path.addQuadCurve(to: endPoint, controlPoint: point)
         }
         
         let lastPoint = points[points.count - 1]
         let secondLastPoint = points[points.count - 2]
         
-        path.addQuadCurveToPoint(lastPoint, controlPoint: secondLastPoint)
+        path.addQuadCurve(to: lastPoint, controlPoint: secondLastPoint)
     }
     
-    private func addSamplingPoints() {
+    fileprivate func addSamplingPoints() {
         samplingPath.removeAllPoints()
         
-        UIColor.redColor().setStroke()
+        UIColor.red.setStroke()
         
         for stroke in strokes {
             for point in stroke.points {
-                samplingPath.moveToPoint(point)
-                samplingPath.appendPath(UIBezierPath(arcCenter:point, radius: path.lineWidth * 3, startAngle: 0.0, endAngle: CGFloat(M_PI) * 2, clockwise: true))
+                samplingPath.move(to: point)
+                samplingPath.append(UIBezierPath(
+                    arcCenter:point,
+                    radius: path.lineWidth * 3,
+                    startAngle: 0.0,
+                    endAngle: CGFloat(M_PI) * 2,
+                    clockwise: true)
+                )
             }
         }
         
@@ -147,7 +152,6 @@ class GestureView: UIView {
     }
     
     func clear() {
-        strokes.removeAll(keepCapacity: false)
+        strokes.removeAll(keepingCapacity: false)
     }
-    
 }

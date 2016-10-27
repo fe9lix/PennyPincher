@@ -19,7 +19,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         gestureView.addGestureRecognizer(pennyPincherGestureRecognizer)
     }
     
-    private func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
