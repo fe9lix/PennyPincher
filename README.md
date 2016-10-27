@@ -1,7 +1,7 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
 [![Platform](https://img.shields.io/badge/platform-iOS-lightgrey.svg?style=flat)](https://github.com/fe9lix/PennyPincher)
-[![Swift](https://img.shields.io/badge/swift-2.0-orange.svg)](https://developer.apple.com/swift/blog/?id=29)
+[![Swift](https://img.shields.io/badge/swift-3.0-orange.svg)](https://developer.apple.com/swift/blog/?id=29)
 
 # PennyPincher
 
@@ -17,7 +17,8 @@ Here's the full reference for the paper:
 
 ## Requirements
 
-*>=* iOS 8, Xcode 7, Swift 2.0
+v1.1.0: *>=* iOS 9, Xcode 8, Swift 3.0  
+v1.0.3: *>=* iOS 8, Xcode 7, Swift 2.0
 
 ## Installation
 Recommended installation options are via Carthage or manual installation.
