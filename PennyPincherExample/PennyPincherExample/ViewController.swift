@@ -2,7 +2,6 @@ import UIKit
 import PennyPincher
 
 class ViewController: UIViewController, UITextFieldDelegate {
-    
     @IBOutlet weak var gestureView: GestureView!
     @IBOutlet weak var templateTextField: UITextField!
     @IBOutlet weak var recognizerResultLabel: UILabel!
@@ -20,25 +19,26 @@ class ViewController: UIViewController, UITextFieldDelegate {
         gestureView.addGestureRecognizer(pennyPincherGestureRecognizer)
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    private func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
-    @IBAction func didTapAddTemplate(sender: AnyObject) {
-        if let text = templateTextField.text, template = PennyPincher.createTemplate(text, points: gestureView.points) {
-            pennyPincherGestureRecognizer.templates.append(template)
+    @IBAction func didTapAddTemplate(_ sender: AnyObject) {
+        if
+            let text = templateTextField.text,
+            let template = PennyPincher.createTemplate(text, points: gestureView.points) {
+                pennyPincherGestureRecognizer.templates.append(template)
         }
         
         gestureView.clear()
     }
     
-    func didRecognize(pennyPincherGestureRecognizer: PennyPincherGestureRecognizer) {
+    func didRecognize(_ pennyPincherGestureRecognizer: PennyPincherGestureRecognizer) {
         switch pennyPincherGestureRecognizer.state {
-        case .Ended, .Cancelled, .Failed:
+        case .ended, .cancelled, .failed:
             updateRecognizerResult()
-        default:
-            break
+        default: break
         }
     }
     
@@ -52,9 +52,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         recognizerResultLabel.text = "Template: \(template.id), Similarity: \(similarityString)"
     }
    
-    @IBAction func didTapClear(sender: AnyObject) {
+    @IBAction func didTapClear(_ sender: AnyObject) {
         recognizerResultLabel.text = ""
         gestureView.clear()
     }
-    
 }

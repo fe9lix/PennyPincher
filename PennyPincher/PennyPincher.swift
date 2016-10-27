@@ -1,33 +1,24 @@
 import UIKit
 
+public typealias PennyPincherResult = (template: PennyPincherTemplate, similarity: CGFloat)
+
 public class PennyPincher {
-    
     private static let NumResamplingPoints = 16
     
-    public init() {
-        
-    }
-    
-    public class func createTemplate(id: String, points: [CGPoint]) -> PennyPincherTemplate? {
-        if points.count == 0 {
-            return nil
-        }
+    public class func createTemplate(_ id: String, points: [CGPoint]) -> PennyPincherTemplate? {
+        guard points.count > 0 else { return nil }
         
         return PennyPincherTemplate(id: id, points: PennyPincher.resampleBetweenPoints(points))
     }
     
-    public class func recognize(points: [CGPoint], templates: [PennyPincherTemplate]) -> (template: PennyPincherTemplate, similarity: CGFloat)? {
-        if points.count == 0 || templates.count == 0 {
-            return nil
-        }
+    public class func recognize(_ points: [CGPoint], templates: [PennyPincherTemplate]) -> PennyPincherResult? {
+        guard points.count > 0 && templates.count > 0 else { return nil }
         
         let c = PennyPincher.resampleBetweenPoints(points)
         
-        if c.count == 0 {
-            return nil
-        }
+        guard c.count > 0 else { return nil }
         
-        var similarity = CGFloat.min
+        var similarity = CGFloat.leastNormalMagnitude
         var t: PennyPincherTemplate!
         var d: CGFloat
         
@@ -49,23 +40,20 @@ public class PennyPincher {
             }
         }
         
-        if t == nil {
-            return nil
-        }
+        guard t != nil else { return nil }
         
         return (t, similarity)
     }
     
-    private class func resampleBetweenPoints(p: [CGPoint]) -> [CGPoint] {
+    private class func resampleBetweenPoints(_ p: [CGPoint]) -> [CGPoint] {
         var points = p
         let i = pathLength(points) / CGFloat(PennyPincher.NumResamplingPoints - 1)
         var d: CGFloat = 0.0
         var v = [CGPoint]()
         var prev = points.first!
-        
         var index = 0
+        
         for _ in points {
-            
             if index == 0 {
                 index += 1
                 continue
@@ -74,16 +62,16 @@ public class PennyPincher {
             let thisPoint = points[index]
             let prevPoint = points[index - 1]
             
-            let pd = distanceBetweenPoint(thisPoint, andPoint: prevPoint)
+            let pd = distanceBetween(thisPoint, to: prevPoint)
             
             if (d + pd) >= i {
-                let q = CGPointMake(
-                    prevPoint.x + (thisPoint.x - prevPoint.x) * (i - d) / pd,
-                    prevPoint.y + (thisPoint.y - prevPoint.y) * (i - d) / pd
+                let q = CGPoint(
+                    x: prevPoint.x + (thisPoint.x - prevPoint.x) * (i - d) / pd,
+                    y: prevPoint.y + (thisPoint.y - prevPoint.y) * (i - d) / pd
                 )
                 
-                var r = CGPointMake(q.x - prev.x, q.y - prev.y)
-                let rd = distanceBetweenPoint(CGPointZero, andPoint: r)
+                var r = CGPoint(x: q.x - prev.x, y: q.y - prev.y)
+                let rd = distanceBetween(CGPoint.zero, to: r)
                 r.x = r.x / rd
                 r.y = r.y / rd
                 
@@ -91,7 +79,7 @@ public class PennyPincher {
                 prev = q
                 
                 v.append(r)
-                points.insert(q, atIndex: index)
+                points.insert(q, at: index)
                 index += 1
             } else {
                 d = d + pd
@@ -103,21 +91,20 @@ public class PennyPincher {
         return v
     }
     
-    private class func pathLength(points: [CGPoint]) -> CGFloat {
+    private class func pathLength(_ points: [CGPoint]) -> CGFloat {
         var d: CGFloat = 0.0
         
         for i in 1..<points.count {
-            d = d + distanceBetweenPoint(points[i - 1], andPoint: points[i])
+            d = d + distanceBetween(points[i - 1], to: points[i])
         }
         
         return d
     }
     
-    private class func distanceBetweenPoint(pointA: CGPoint, andPoint pointB: CGPoint) -> CGFloat {
+    private class func distanceBetween(_ pointA: CGPoint, to pointB: CGPoint) -> CGFloat {
         let distX = pointA.x - pointB.x
         let distY = pointA.y - pointB.y
         
         return sqrt((distX * distX) + (distY * distY))
     }
-    
 }
