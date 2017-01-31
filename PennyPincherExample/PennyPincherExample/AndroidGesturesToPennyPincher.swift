@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import PennyPincher
 
 //Comments from: https://android.googlesource.com/platform/frameworks/base/+/master/core/java/android/gesture/GestureStore.java :
 //
@@ -79,7 +80,7 @@ extension Data {
     }
 }
 
-class BigEndianDataReader {
+final class BigEndianDataReader {
     var index = 0
     let data: Data
     
@@ -121,22 +122,25 @@ class BigEndianDataReader {
     }
 }
 
-class AndroidRecognizerToPennyPincher {
+final class AndroidRecognizerToPennyPincher {
     
-    func loadGesturesFile() {
+    static func translatedTemplates() -> [PennyPincherTemplate] {
         guard let path = Bundle.main.path(forResource: "gestures", ofType: "bin") else {
             print("File not found")
-            return
+            return []
         }
         
         print("loadGesturesFile invoked. path=\(path)")
         
         guard let data = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
             print("Error reading data")
-            return
+            return []
         }
         
         print("Read \(data.count)bytes")
+        
+        //let template = PennyPincher.createTemplate(text, points: gestureView.points)
+        var templates = [PennyPincherTemplate]()
         
         //BigEndian reader
         let reader = BigEndianDataReader(data: data)
@@ -158,11 +162,13 @@ class AndroidRecognizerToPennyPincher {
                 
                 print("Gesture #\(gestureNumber): id=\(gesture.id) strokes=\(gesture.strokeCount)")
                 
+                var cgPoints = [CGPoint]()
                 for strokeNumber in 0..<gesture.strokeCount {
                     
                     let stroke = AndroidGesturesFile.Stroke(pointsCount: reader.getInt(zeroedType: Int32()))
 
                     print("Stroke #\(strokeNumber): points=\(stroke.pointsCount)")
+                    
                     
                     for pointNumber in 0..<stroke.pointsCount {
                         
@@ -171,9 +177,18 @@ class AndroidRecognizerToPennyPincher {
                                                               timeStamp: reader.getInt(zeroedType: Int64()))
                         
                         print("Point #\(pointNumber): (\(point.x), \(point.y)) timestamp:\(point.timeStamp)")
+                        
+                        let cgPoint = CGPoint(x: CGFloat(point.x), y: CGFloat(point.y))
+                        cgPoints.append(cgPoint)
                     }
+                }
+                
+                if let template = PennyPincher.createTemplate(entry.name, points: cgPoints) {
+                    templates.append(template)
                 }
             }
         }
+        
+        return templates
     }
 }

@@ -35,8 +35,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func onLoadAndroidDataButtonPressed(_ sender: Any) {
-        let androidRecognizerToPennyPincher = AndroidRecognizerToPennyPincher()
-        androidRecognizerToPennyPincher.loadGesturesFile()
+        let templates = AndroidRecognizerToPennyPincher.translatedTemplates()
+        pennyPincherGestureRecognizer.templates.append(contentsOf: templates)
     }
     
     func didRecognize(_ pennyPincherGestureRecognizer: PennyPincherGestureRecognizer) {
