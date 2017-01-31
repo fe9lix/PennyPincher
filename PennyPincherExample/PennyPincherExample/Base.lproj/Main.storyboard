@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYD-0i-gDe" customClass="GestureView" customModule="PennyPincherExample" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="71" width="375" height="515"/>
+                                <rect key="frame" x="0.0" y="71" width="375" height="316"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="G" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xso-1r-3vc">
@@ -68,36 +68,48 @@
                                     <action selector="didTapClear:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jnq-LG-hXJ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pzZ-cA-DFv">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pzZ-cA-DFv">
                                 <rect key="frame" x="16" y="594" width="128" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Load Android Data"/>
                                 <connections>
                                     <action selector="onLoadAndroidDataButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zKZ-qX-5fh"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kA2-2m-k4h">
+                                <rect key="frame" x="0.0" y="387" width="375" height="199"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="199" id="wtZ-dI-AOf"/>
+                                </constraints>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="xso-1r-3vc" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="30" id="1Lp-tV-B3Z"/>
-                            <constraint firstItem="cpk-kL-7pf" firstAttribute="top" secondItem="aYD-0i-gDe" secondAttribute="bottom" constant="50" id="7r1-M0-TPU"/>
+                            <constraint firstItem="kA2-2m-k4h" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="1eo-vL-hqZ"/>
                             <constraint firstItem="V3e-n6-ees" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="EF8-ri-rmn"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="CxS-P1-fBf" secondAttribute="bottom" constant="6" id="ElO-Xr-vIa"/>
                             <constraint firstItem="V3e-n6-ees" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="30" id="N26-fg-NDZ"/>
                             <constraint firstItem="V3e-n6-ees" firstAttribute="leading" secondItem="xso-1r-3vc" secondAttribute="trailing" constant="8" id="NUo-6J-Jno"/>
+                            <constraint firstAttribute="trailing" secondItem="kA2-2m-k4h" secondAttribute="trailing" id="SsU-Ur-gRj"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="cpk-kL-7pf" secondAttribute="bottom" constant="10" id="U3c-j4-Zt2"/>
+                            <constraint firstItem="pzZ-cA-DFv" firstAttribute="top" secondItem="kA2-2m-k4h" secondAttribute="bottom" constant="8" symbolic="YES" id="UJy-Sw-jAb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aYD-0i-gDe" secondAttribute="trailing" constant="-16" id="ZYN-40-3ii"/>
+                            <constraint firstItem="cpk-kL-7pf" firstAttribute="top" secondItem="pzZ-cA-DFv" secondAttribute="bottom" constant="12" id="ccy-2m-qRD"/>
                             <constraint firstItem="CxS-P1-fBf" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="eDF-x3-VjR"/>
                             <constraint firstItem="aYD-0i-gDe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="gVc-Or-ewf"/>
                             <constraint firstItem="aYD-0i-gDe" firstAttribute="top" secondItem="xso-1r-3vc" secondAttribute="bottom" constant="11" id="hag-Pj-Aqv"/>
+                            <constraint firstItem="kA2-2m-k4h" firstAttribute="top" secondItem="aYD-0i-gDe" secondAttribute="bottom" id="hvA-Qd-tvU"/>
                             <constraint firstItem="CxS-P1-fBf" firstAttribute="leading" secondItem="cpk-kL-7pf" secondAttribute="trailing" constant="10" id="iGm-Qu-mQs"/>
                             <constraint firstItem="xso-1r-3vc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="mG4-Ut-tO9"/>
                             <constraint firstItem="cpk-kL-7pf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="q4W-XA-KBj"/>
+                            <constraint firstItem="pzZ-cA-DFv" firstAttribute="leading" secondItem="cpk-kL-7pf" secondAttribute="leading" id="z98-vE-UUL"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="gestureView" destination="aYD-0i-gDe" id="Nlo-Sx-SCo"/>
                         <outlet property="recognizerResultLabel" destination="cpk-kL-7pf" id="La5-M1-0p8"/>
+                        <outlet property="tableView" destination="kA2-2m-k4h" id="bs3-y8-MwK"/>
                         <outlet property="templateTextField" destination="xso-1r-3vc" id="Zri-K0-TXp"/>
                     </connections>
                 </viewController>
