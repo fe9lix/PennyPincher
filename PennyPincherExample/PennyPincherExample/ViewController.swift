@@ -34,6 +34,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
         gestureView.clear()
     }
     
+    @IBAction func onLoadAndroidDataButtonPressed(_ sender: Any) {
+        let androidRecognizerToPennyPincher = AndroidRecognizerToPennyPincher()
+        androidRecognizerToPennyPincher.loadGesturesFile()
+    }
+    
     func didRecognize(_ pennyPincherGestureRecognizer: PennyPincherGestureRecognizer) {
         switch pennyPincherGestureRecognizer.state {
         case .ended, .cancelled, .failed:

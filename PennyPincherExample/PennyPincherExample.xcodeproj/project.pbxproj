@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05B9FA711E3FA440001191E6 /* AndroidGesturesToPennyPincher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9FA701E3FA440001191E6 /* AndroidGesturesToPennyPincher.swift */; };
+		05B9FA731E3FAF47001191E6 /* gestures.bin in Resources */ = {isa = PBXBuildFile; fileRef = 05B9FA721E3FAF47001191E6 /* gestures.bin */; };
 		DC81940A1B6822CB00F5464A /* GestureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8194091B6822CB00F5464A /* GestureView.swift */; };
 		DC8A2EBA1B681D7800E8FA66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8A2EB91B681D7800E8FA66 /* AppDelegate.swift */; };
 		DC8A2EBC1B681D7800E8FA66 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8A2EBB1B681D7800E8FA66 /* ViewController.swift */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		05B9FA701E3FA440001191E6 /* AndroidGesturesToPennyPincher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AndroidGesturesToPennyPincher.swift; sourceTree = "<group>"; };
+		05B9FA721E3FAF47001191E6 /* gestures.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = gestures.bin; sourceTree = "<group>"; };
 		DC8194091B6822CB00F5464A /* GestureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GestureView.swift; sourceTree = "<group>"; };
 		DC8A2EB61B681D7800E8FA66 /* PennyPincherExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PennyPincherExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC8A2EB91B681D7800E8FA66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -63,10 +67,12 @@
 				DC8A2EB91B681D7800E8FA66 /* AppDelegate.swift */,
 				DC8194091B6822CB00F5464A /* GestureView.swift */,
 				DC8A2EBB1B681D7800E8FA66 /* ViewController.swift */,
+				05B9FA701E3FA440001191E6 /* AndroidGesturesToPennyPincher.swift */,
 				DC8A2EBD1B681D7800E8FA66 /* Main.storyboard */,
 				DC8A2EC01B681D7800E8FA66 /* Assets.xcassets */,
 				DC8A2EC21B681D7800E8FA66 /* LaunchScreen.storyboard */,
 				DC8A2EC51B681D7800E8FA66 /* Info.plist */,
+				05B9FA721E3FAF47001191E6 /* gestures.bin */,
 			);
 			path = PennyPincherExample;
 			sourceTree = "<group>";
@@ -133,6 +139,7 @@
 			files = (
 				DC8A2EC41B681D7800E8FA66 /* LaunchScreen.storyboard in Resources */,
 				DC8A2EC11B681D7800E8FA66 /* Assets.xcassets in Resources */,
+				05B9FA731E3FAF47001191E6 /* gestures.bin in Resources */,
 				DC8A2EBF1B681D7800E8FA66 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -165,6 +172,7 @@
 				DC8A2EBC1B681D7800E8FA66 /* ViewController.swift in Sources */,
 				DC8A2EBA1B681D7800E8FA66 /* AppDelegate.swift in Sources */,
 				DC81940A1B6822CB00F5464A /* GestureView.swift in Sources */,
+				05B9FA711E3FA440001191E6 /* AndroidGesturesToPennyPincher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
