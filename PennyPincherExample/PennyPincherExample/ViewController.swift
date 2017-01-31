@@ -66,7 +66,7 @@ final class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func onLoadAndroidDataButtonPressed(_ sender: Any) {
-        let importedGestures = AndroidGesturesImporter.translatedGestures(from: AndroidGesturesImporter.defaultAndroidFilePath ?? "")
+        let importedGestures = PennyPincherAndroidGesturesImporter.translatedGestures(from: PennyPincherAndroidGesturesImporter.defaultAndroidFilePath ?? "")
         gestures.append(contentsOf: importedGestures)
         
         for gesture in importedGestures {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0596D6C41E410E4C004435B0 /* PennyPincherAndroidGesturesImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0596D6C31E410E4C004435B0 /* PennyPincherAndroidGesturesImporter.swift */; };
 		DC656B351B68147200C5E424 /* PennyPincher.h in Headers */ = {isa = PBXBuildFile; fileRef = DC656B341B68147200C5E424 /* PennyPincher.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DC656B3C1B68147200C5E424 /* PennyPincher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC656B311B68147200C5E424 /* PennyPincher.framework */; };
 		DC656B411B68147200C5E424 /* PennyPincherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC656B401B68147200C5E424 /* PennyPincherTests.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0596D6C31E410E4C004435B0 /* PennyPincherAndroidGesturesImporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PennyPincherAndroidGesturesImporter.swift; sourceTree = "<group>"; };
 		DC656B311B68147200C5E424 /* PennyPincher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PennyPincher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC656B341B68147200C5E424 /* PennyPincher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PennyPincher.h; sourceTree = "<group>"; };
 		DC656B361B68147200C5E424 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				DC8A2ECB1B681DD800E8FA66 /* PennyPincher.swift */,
 				DC8A2ECC1B681DD800E8FA66 /* PennyPincherGestureRecognizer.swift */,
 				DC8A2ECD1B681DD800E8FA66 /* PennyPincherTemplate.swift */,
+				0596D6C31E410E4C004435B0 /* PennyPincherAndroidGesturesImporter.swift */,
 				DC656B361B68147200C5E424 /* Info.plist */,
 			);
 			path = PennyPincher;
@@ -206,6 +209,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC8A2ED01B681DD800E8FA66 /* PennyPincherTemplate.swift in Sources */,
+				0596D6C41E410E4C004435B0 /* PennyPincherAndroidGesturesImporter.swift in Sources */,
 				DC8A2ECF1B681DD800E8FA66 /* PennyPincherGestureRecognizer.swift in Sources */,
 				DC8A2ECE1B681DD800E8FA66 /* PennyPincher.swift in Sources */,
 			);

@@ -1,5 +1,5 @@
 //
-//  AndroidGesturesImporter.swift
+//  PennyPincherAndroidGesturesImporter.swift
 //  PennyPincher
 //
 //  Created by Raf Cabezas on 1/30/17.
@@ -7,100 +7,44 @@
 //
 
 import Foundation
-import PennyPincher
 
 // Example usage:
 //
-//    for gesture in AndroidGesturesImporter.translatedGestures(from: AndroidGesturesImporter.defaultAndroidFilePath ?? "") {
+//    for gesture in PennyPincherAndroidGesturesImporter.translatedGestures(from: PennyPincherAndroidGesturesImporter.defaultAndroidFilePath ?? "") {
 //        if let template = PennyPincher.createTemplate(gesture.id, points: gesture.allPoints) {
 //            pennyPincherGestureRecognizer.templates.append(template)
 //        }
 //    }
 //
 
-protocol ByteSwappable {
-    var byteSwapped: Self { get }
-    init()
-}
-
-extension Int16: ByteSwappable {}
-extension Int32: ByteSwappable {}
-extension Int64: ByteSwappable {}
-
-final class BigEndianDataReader {
-    var index = 0
-    let data: Data
+public struct ImportedStrokes {
+    public let points: [CGPoint]
     
-    init(data: Data) {
-        self.data = data
-    }
-    
-    func getInt<T: ByteSwappable>(zeroedType: T) -> T {
-        var buffer = zeroedType
-        let length = MemoryLayout<T>.size
-        (data as NSData).getBytes(&buffer, range: NSRange(location: index, length: length))
-        index += length
-        
-        return buffer.byteSwapped
-    }
-    
-    func getFloat32() -> Float32 {
-        var buffer: UInt32 = 0
-        let length = 4
-        (data as NSData).getBytes(&buffer, range: NSRange(location: index, length: length))
-        let value = unsafeBitCast(buffer.byteSwapped, to: Float32.self)
-        index += length
-        
-        return value
-    }
-
-    func getCString() -> String {
-        let maxLength = (data.count - index - 1)
-        let stringData = data.subdata(in: index..<index + maxLength)
-        let string = String(cString: [UInt8](stringData))
-        index += (string.characters.count) //(why not: +1 for null-terminator?)
-        
-        return string
-    }
-    
-    func skip(bytes: Int) {
-        index += bytes
+    public init(points: [CGPoint]) {
+        self.points = points
     }
 }
 
-struct ImportedStrokes {
-    let points: [CGPoint]
+public struct ImportedGesture {
+    public let id: String
+    public let strokes: [ImportedStrokes]
     
-    func normalized() -> ImportedStrokes {
-        
-        let max = (points.map { $0.x } + points.map { $0.y }).max() ?? 1
-        let scale: CGFloat = 300
-        
-        let np = points.map { point in
-            
-            return CGPoint(x: (point.x / max) * scale,
-                           y: (point.y / max) * scale)
-        }
-        
-        return ImportedStrokes(points: np)
+    public init(id: String, strokes: [ImportedStrokes]) {
+        self.id = id
+        self.strokes = strokes
     }
-}
-
-struct ImportedGesture {
-    let id: String
-    let strokes: [ImportedStrokes]
     
-    var allPoints: [CGPoint] {
+    public var allPoints: [CGPoint] {
         return strokes.reduce([CGPoint]()) { points, stroke in
             return points + stroke.points
         }
     }
 }
 
-final class AndroidGesturesImporter {
+public final class PennyPincherAndroidGesturesImporter {
     
-    static var defaultAndroidFilePath: String? {
-        guard let path = Bundle.main.path(forResource: "gestures", ofType: "bin") else {
+    public static var defaultAndroidFilePath: String? {
+        guard let path = Bundle.main.path(forResource: "gestures", ofType: "") else {
             print("File not found")
             return nil
         }
@@ -108,21 +52,16 @@ final class AndroidGesturesImporter {
         return path
     }
     
-    static func translatedGestures(from path: String, debug: Bool = false) -> [ImportedGesture] {
+    public static func translatedGestures(from path: String, debug: Bool = false) -> [ImportedGesture] {
+        var translatedGestures = [ImportedGesture]()
         if debug { print("loadGesturesFile invoked. path=\(path)") }
         
         guard let data = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
             if debug { print("Error reading data") }
             return []
         }
-        
         if debug { print("Read \(data.count)bytes") }
         
-        var translatedGestures = [ImportedGesture]()
-        
-        //BigEndian reader
-        let reader = BigEndianDataReader(data: data)
-
         //Read from android binary file: (Comments from: https://android.googlesource.com/platform/frameworks/base/+/master/core/java/android/gesture/GestureStore.java)
         //
         //    File format for GestureStore:
@@ -146,11 +85,15 @@ final class AndroidGesturesImporter {
         //                8 bytes     long        Time stamp
         //
 
-        //Header
+        let reader = BigEndianDataReader(data: data)
         let version = reader.getInt(zeroedType: Int16())
         let entryCount = reader.getInt(zeroedType: Int32())
-        
         if debug { print("Header data: version=\(version) entries=\(entryCount)") }
+        
+        guard version == 1 else {
+            print("PennyPincherAndroidGesturesImporter Error. Unsupported file version \(version)")
+            return []
+        }
         
         for entryNumber in 0..<entryCount {
             //Entry
@@ -162,7 +105,6 @@ final class AndroidGesturesImporter {
             for gestureNumber in 0..<gestureCount {
                 let gestureId = reader.getInt(zeroedType: Int64())
                 let strokeCount = reader.getInt(zeroedType: Int32())
-                
                 if debug { print("Gesture #\(gestureNumber): id=\(gestureId) strokes=\(strokeCount)") }
                 
                 var strokes = [ImportedStrokes]()
@@ -189,5 +131,70 @@ final class AndroidGesturesImporter {
         }
         
         return translatedGestures
+    }
+}
+
+private protocol ByteSwappable {
+    var byteSwapped: Self { get }
+    init()
+}
+
+extension Int16: ByteSwappable {}
+extension Int32: ByteSwappable {}
+extension Int64: ByteSwappable {}
+
+private final class BigEndianDataReader {
+    var index = 0
+    let data: Data
+    
+    init(data: Data) {
+        self.data = data
+    }
+    
+    func getInt<T: ByteSwappable>(zeroedType: T) -> T {
+        var buffer = zeroedType
+        let length = MemoryLayout<T>.size
+        (data as NSData).getBytes(&buffer, range: NSRange(location: index, length: length))
+        index += length
+        
+        return buffer.byteSwapped
+    }
+    
+    func getFloat32() -> Float32 {
+        var buffer: UInt32 = 0
+        let length = 4
+        (data as NSData).getBytes(&buffer, range: NSRange(location: index, length: length))
+        let value = unsafeBitCast(buffer.byteSwapped, to: Float32.self)
+        index += length
+        
+        return value
+    }
+    
+    func getCString() -> String {
+        let maxLength = (data.count - index - 1)
+        let stringData = data.subdata(in: index..<index + maxLength)
+        let string = String(cString: [UInt8](stringData))
+        index += (string.characters.count) //(why not: +1 for null-terminator?)
+        
+        return string
+    }
+    
+    func skip(bytes: Int) {
+        index += bytes
+    }
+}
+
+extension ImportedStrokes {
+    fileprivate func normalized() -> ImportedStrokes {
+        let max = (points.map { $0.x } + points.map { $0.y }).max() ?? 1
+        let scale: CGFloat = 300
+        
+        let np = points.map { point in
+            
+            return CGPoint(x: (point.x / max) * scale,
+                           y: (point.y / max) * scale)
+        }
+        
+        return ImportedStrokes(points: np)
     }
 }
