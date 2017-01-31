@@ -72,7 +72,7 @@
                                 <rect key="frame" x="16" y="594" width="128" height="30"/>
                                 <state key="normal" title="Load Android Data"/>
                                 <connections>
-                                    <action selector="onLoadAndroidDataButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zKZ-qX-5fh"/>
+                                    <action selector="didTapLoadAndroidData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6z2-8o-APO"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kA2-2m-k4h">

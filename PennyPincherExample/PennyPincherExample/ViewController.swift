@@ -48,25 +48,37 @@ final class ViewController: UIViewController, UITextFieldDelegate {
         let similarityString = String(format: "%.2f", similarity)
         recognizerResultLabel.text = "Template: \(template.id), Similarity: \(similarityString)"
     }
-   
-    //MARK:- Actions
+}
+
+//MARK:- Actions
+extension ViewController {
     @IBAction func didTapAddTemplate(_ sender: AnyObject) {
-        if
-            let text = templateTextField.text,
-            let template = PennyPincher.createTemplate(text, points: gestureView.points) {
-            pennyPincherGestureRecognizer.templates.append(template)
-            
-            let strokes = gestureView.strokes.map { ImportedStrokes(points: $0.points) }
-            let gesture = ImportedGesture(id: text, strokes: strokes)
-            gestures.append(gesture)
+        guard let text = templateTextField.text, !text.isEmpty else {
+            recognizerResultLabel.text = "Please name the template"
+            return
         }
+
+        guard let template = PennyPincher.createTemplate(text, points: gestureView.points) else {
+            recognizerResultLabel.text = "Error creating template"
+            return
+        }
+        
+        pennyPincherGestureRecognizer.templates.append(template)
+        let strokes = gestureView.strokes.map { ImportedStrokes(points: $0.points) }
+        let gesture = ImportedGesture(id: text, strokes: strokes)
+        gestures.append(gesture)
         
         gestureView.clear()
         tableView.reloadData()
     }
     
-    @IBAction func onLoadAndroidDataButtonPressed(_ sender: Any) {
-        let importedGestures = PennyPincherAndroidGesturesImporter.translatedGestures(from: PennyPincherAndroidGesturesImporter.defaultAndroidFilePath ?? "")
+    @IBAction func didTapLoadAndroidData(_ sender: Any) {
+        guard let androidGesturesFileURL = PennyPincherAndroidGesturesImporter.defaultAndroidFileURL else {
+            recognizerResultLabel.text = "File not found"
+            return
+        }
+        
+        let importedGestures = PennyPincherAndroidGesturesImporter.translatedGestures(fromURL: androidGesturesFileURL)
         gestures.append(contentsOf: importedGestures)
         
         for gesture in importedGestures {

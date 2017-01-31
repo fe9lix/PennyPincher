@@ -8,55 +8,32 @@
 
 import Foundation
 
-// Example usage:
-//
-//    for gesture in PennyPincherAndroidGesturesImporter.translatedGestures(from: PennyPincherAndroidGesturesImporter.defaultAndroidFilePath ?? "") {
-//        if let template = PennyPincher.createTemplate(gesture.id, points: gesture.allPoints) {
-//            pennyPincherGestureRecognizer.templates.append(template)
-//        }
-//    }
-//
-
-public struct ImportedStrokes {
-    public let points: [CGPoint]
-    
-    public init(points: [CGPoint]) {
-        self.points = points
-    }
-}
-
-public struct ImportedGesture {
-    public let id: String
-    public let strokes: [ImportedStrokes]
-    
-    public init(id: String, strokes: [ImportedStrokes]) {
-        self.id = id
-        self.strokes = strokes
-    }
-    
-    public var allPoints: [CGPoint] {
-        return strokes.reduce([CGPoint]()) { points, stroke in
-            return points + stroke.points
-        }
-    }
-}
-
+/// PennyPincherAndroidGesturesImporter
+/// Example usage:
+///
+///    for gesture in PennyPincherAndroidGesturesImporter.translatedGestures(fromURL: androidGesturesFileURL) {
+///        if let template = PennyPincher.createTemplate(gesture.id, points: gesture.allPoints) {
+///            pennyPincherGestureRecognizer.templates.append(template)
+///        }
+///    }
+///
 public final class PennyPincherAndroidGesturesImporter {
     
-    public static var defaultAndroidFilePath: String? {
-        guard let path = Bundle.main.path(forResource: "gestures", ofType: "") else {
+    /// Default android gestures file is called 'gestures', no extension
+    public static var defaultAndroidFileURL: URL? {
+        guard let url = Bundle.main.url(forResource: "gestures", withExtension: nil) else {
             print("File not found")
             return nil
         }
         
-        return path
+        return url
     }
     
-    public static func translatedGestures(from path: String, debug: Bool = false) -> [ImportedGesture] {
+    public static func translatedGestures(fromURL url: URL, debug: Bool = false) -> [ImportedGesture] {
         var translatedGestures = [ImportedGesture]()
-        if debug { print("loadGesturesFile invoked. path=\(path)") }
+        if debug { print("loadGesturesFile invoked. path=\(url.absoluteString)") }
         
-        guard let data = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
+        guard let data = try? Data(contentsOf: url) else {
             if debug { print("Error reading data") }
             return []
         }
@@ -134,14 +111,14 @@ public final class PennyPincherAndroidGesturesImporter {
     }
 }
 
-private protocol ByteSwappable {
-    var byteSwapped: Self { get }
+private protocol BigEndian {
+    init(bigEndian value: Self)
     init()
 }
 
-extension Int16: ByteSwappable {}
-extension Int32: ByteSwappable {}
-extension Int64: ByteSwappable {}
+extension Int16: BigEndian {}
+extension Int32: BigEndian {}
+extension Int64: BigEndian {}
 
 private final class BigEndianDataReader {
     var index = 0
@@ -151,23 +128,22 @@ private final class BigEndianDataReader {
         self.data = data
     }
     
-    func getInt<T: ByteSwappable>(zeroedType: T) -> T {
+    func getInt<T: BigEndian>(zeroedType: T) -> T {
         var buffer = zeroedType
         let length = MemoryLayout<T>.size
         (data as NSData).getBytes(&buffer, range: NSRange(location: index, length: length))
         index += length
         
-        return buffer.byteSwapped
+        return T(bigEndian: buffer)
     }
     
     func getFloat32() -> Float32 {
         var buffer: UInt32 = 0
         let length = 4
         (data as NSData).getBytes(&buffer, range: NSRange(location: index, length: length))
-        let value = unsafeBitCast(buffer.byteSwapped, to: Float32.self)
         index += length
         
-        return value
+        return unsafeBitCast(UInt32(bigEndian: buffer), to: Float32.self)
     }
     
     func getCString() -> String {
