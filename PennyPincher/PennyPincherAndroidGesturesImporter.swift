@@ -3,7 +3,6 @@
 //  PennyPincher
 //
 //  Created by Raf Cabezas on 1/30/17.
-//  Copyright © 2017 WillowTree, Inc. All rights reserved.
 //
 
 import Foundation
@@ -20,7 +19,7 @@ import Foundation
 public final class PennyPincherAndroidGesturesImporter {
     
     /// Default android gestures file is called 'gestures', no extension
-    public static var defaultAndroidFileURL: URL? {
+    public static var defaultImportFileURL: URL? {
         guard let url = Bundle.main.url(forResource: "gestures", withExtension: nil) else {
             print("File not found")
             return nil
@@ -29,9 +28,9 @@ public final class PennyPincherAndroidGesturesImporter {
         return url
     }
     
-    public static func translatedGestures(fromURL url: URL, debug: Bool = false) -> [ImportedGesture] {
+    public static func translatedGestures(from url: URL, debug: Bool = false) -> [ImportedGesture] {
         var translatedGestures = [ImportedGesture]()
-        if debug { print("loadGesturesFile invoked. path=\(url.absoluteString)") }
+        if debug { print("translatedGestures invoked. path=\(url.absoluteString)") }
         
         guard let data = try? Data(contentsOf: url) else {
             if debug { print("Error reading data") }
@@ -111,14 +110,14 @@ public final class PennyPincherAndroidGesturesImporter {
     }
 }
 
-private protocol BigEndian {
+private protocol BigEndianConvertible {
     init(bigEndian value: Self)
     init()
 }
 
-extension Int16: BigEndian {}
-extension Int32: BigEndian {}
-extension Int64: BigEndian {}
+extension Int16: BigEndianConvertible {}
+extension Int32: BigEndianConvertible {}
+extension Int64: BigEndianConvertible {}
 
 private final class BigEndianDataReader {
     var index = 0
@@ -128,7 +127,7 @@ private final class BigEndianDataReader {
         self.data = data
     }
     
-    func getInt<T: BigEndian>(zeroedType: T) -> T {
+    func getInt<T: BigEndianConvertible>(zeroedType: T) -> T {
         var buffer = zeroedType
         let length = MemoryLayout<T>.size
         (data as NSData).getBytes(&buffer, range: NSRange(location: index, length: length))

@@ -1,9 +1,8 @@
 //
-//  PennyPincherAndroidGesturesImporter.swift
+//  PennyPincherImportedGestures.swift
 //  PennyPincher
 //
-//  Created by Raf Cabezas on 1/30/17.
-//  Copyright © 2017 WillowTree, Inc. All rights reserved.
+//  Created by Raf Cabezas on 1/31/17.
 //
 
 import Foundation

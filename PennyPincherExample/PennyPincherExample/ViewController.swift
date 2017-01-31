@@ -19,7 +19,7 @@ final class ViewController: UIViewController, UITextFieldDelegate {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
         
         pennyPincherGestureRecognizer.enableMultipleStrokes = true
-        pennyPincherGestureRecognizer.allowedTimeBetweenMultipleStrokes = 0.2
+        pennyPincherGestureRecognizer.allowedTimeBetweenMultipleStrokes = 0.6
         pennyPincherGestureRecognizer.cancelsTouchesInView = false
         pennyPincherGestureRecognizer.addTarget(self, action: #selector(didRecognize(_:)))
         
@@ -73,7 +73,7 @@ extension ViewController {
     }
     
     @IBAction func didTapLoadAndroidData(_ sender: Any) {
-        guard let androidGesturesFileURL = PennyPincherAndroidGesturesImporter.defaultAndroidFileURL else {
+        guard let androidGesturesFileURL = PennyPincherAndroidGesturesImporter.defaultImportFileURL else {
             recognizerResultLabel.text = "File not found"
             return
         }

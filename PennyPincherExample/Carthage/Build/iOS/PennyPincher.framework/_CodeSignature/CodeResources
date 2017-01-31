@@ -18,19 +18,19 @@
 		</data>
 		<key>Modules/PennyPincher.swiftmodule/i386.swiftdoc</key>
 		<data>
-		8ABHQ/seOdu35Pk26S9ma7xHhKU=
+		EaFmK3lw2K3c/lfAEg/jPyy/L98=
 		</data>
 		<key>Modules/PennyPincher.swiftmodule/i386.swiftmodule</key>
 		<data>
-		7p1F+vG+2ocHU7qEBz93SvBzU68=
+		ViRj8eYIqhab/UQ2Bpu+lyS3Tek=
 		</data>
 		<key>Modules/PennyPincher.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		FqAr3qN955yx+biQXSQmifq8Jss=
+		xvu1MiwrfLWfLXbXy2FNn/xXVEg=
 		</data>
 		<key>Modules/PennyPincher.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		1zoekzoBsTQJrQNDU27Lot60gLo=
+		FBLYAueNBJoFczQQSOd5SL/47Fc=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -65,44 +65,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			8ABHQ/seOdu35Pk26S9ma7xHhKU=
+			EaFmK3lw2K3c/lfAEg/jPyy/L98=
 			</data>
 			<key>hash2</key>
 			<data>
-			JFvt1rwh1LAuDer9NG9vYet+0NVjbtt9+uSGuAE6tpM=
+			siMnUh381/FRLbw1u/1Ndeu2w7fW12Ht6MmnK2lUUew=
 			</data>
 		</dict>
 		<key>Modules/PennyPincher.swiftmodule/i386.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			7p1F+vG+2ocHU7qEBz93SvBzU68=
+			ViRj8eYIqhab/UQ2Bpu+lyS3Tek=
 			</data>
 			<key>hash2</key>
 			<data>
-			ogVehaXxaEfYJWwlAfKdSyAt4DU7Y/5WgHqmgdNe4OE=
+			1kYBupM/mAhKL+M9qcgancRG66Ix/n8DuykKJyFJAos=
 			</data>
 		</dict>
 		<key>Modules/PennyPincher.swiftmodule/x86_64.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			FqAr3qN955yx+biQXSQmifq8Jss=
+			xvu1MiwrfLWfLXbXy2FNn/xXVEg=
 			</data>
 			<key>hash2</key>
 			<data>
-			knksDNzGAaNqj1dDgVknrta/NZNV1yJrvcOonGuobp8=
+			PaeAGhqOiWr0mUcpq0lyUJgYdS1K89gwDTSLk7xdjL4=
 			</data>
 		</dict>
 		<key>Modules/PennyPincher.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			1zoekzoBsTQJrQNDU27Lot60gLo=
+			FBLYAueNBJoFczQQSOd5SL/47Fc=
 			</data>
 			<key>hash2</key>
 			<data>
-			Z+5pZugz48PF/oulzq1LfN+F839CHnZx9Q8Tpu6fPe4=
+			Emd6arVzdkDAUWAqZuSicLbTMHEyZLRw5r9A1WqX1xk=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
