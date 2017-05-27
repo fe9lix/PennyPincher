@@ -1,0 +1,8 @@
+title: PennyPincher
+description: A fast gesture recognizer based on the PennyPincher algorithm, written in Swift.
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-cayman
+
+gems:
+  - jekyll-mentions
