@@ -1,7 +1,7 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
 [![Platform](https://img.shields.io/badge/platform-iOS-lightgrey.svg?style=flat)](https://github.com/fe9lix/PennyPincher)
-[![Swift](https://img.shields.io/badge/swift-3.0-orange.svg)](https://developer.apple.com/swift/blog/?id=29)
+[![Swift](https://img.shields.io/badge/swift-3.1-orange.svg)](https://developer.apple.com/swift/blog/?id=29)
 
 # PennyPincher
 
@@ -17,7 +17,7 @@ Here's the full reference for the paper:
 
 ## Requirements
 
-v1.1.0: *>=* iOS 9, Xcode 8, Swift 3.0  
+v1.2.0: *>=* iOS 9, Xcode 8, Swift 3.1  
 v1.0.3: *>=* iOS 8, Xcode 7, Swift 2.0
 
 ## Installation
@@ -26,7 +26,7 @@ Recommended installation options are via Carthage or manual installation.
 ### Carthage:
 PennyPincher supports installation via [Carthage](https://github.com/Carthage/Carthage):
 
-- Add the following line to your Cartfile: `github "fe9lix/PennyPincher" >= 1.1`
+- Add the following line to your Cartfile: `github "fe9lix/PennyPincher" >= 1.2`
 - Run `carthage update`
 
 ### Manual:
@@ -76,9 +76,24 @@ pennyPincherGestureRecognizer.templates.append(template)
 
 Templates could be serialized and saved to disk and then loaded again into memory when the application launches. PennyPincher works pretty well with only one template per gesture (`id`) but, depending on your use case, you can increase its accuracy by adding more for each gesture.
 
+### Loading Templates
+PennyPincher comes with an importer to load and parse the binary Android gesture file format (thanks to [@rafcabezas](https://github.com/rafcabezas) for the contribution). Pass the URL of the gestures file to `AndroidGesturesImporter.translatedGestures(from:)` and then add the templates to the gesture recognizer. The example project contains a gestures file with two gestures.
+
+```swift
+let gestures = AndroidGesturesImporter.translatedGestures(from: gesturesFile)
+for gesture in gestures {
+    if let template = PennyPincher.createTemplate(gesture.id, points: gesture.allPoints) {
+        pennyPincherGestureRecognizer.templates.append(template)
+    }
+}
+```
+
 ## Author
 
 fe9lix
+
+### Contributors  
+rafcabezas
 
 ## License
 
