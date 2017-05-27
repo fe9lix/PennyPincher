@@ -1,5 +1,5 @@
 //
-//  PennyPincherAndroidGesturesImporter.swift
+//  AndroidGesturesImporter.swift
 //  PennyPincher
 //
 //  Created by Raf Cabezas on 1/30/17.
@@ -7,16 +7,16 @@
 
 import Foundation
 
-/// PennyPincherAndroidGesturesImporter
+/// AndroidGesturesImporter
 /// Example usage:
 ///
-///    for gesture in PennyPincherAndroidGesturesImporter.translatedGestures(fromURL: androidGesturesFileURL) {
+///    for gesture in AndroidGesturesImporter.translatedGestures(fromURL: androidGesturesFileURL) {
 ///        if let template = PennyPincher.createTemplate(gesture.id, points: gesture.allPoints) {
 ///            pennyPincherGestureRecognizer.templates.append(template)
 ///        }
 ///    }
 ///
-public final class PennyPincherAndroidGesturesImporter {
+public final class AndroidGesturesImporter {
     
     /// Default android gestures file is called 'gestures', no extension
     public static var defaultImportFileURL: URL? {
@@ -142,7 +142,7 @@ private final class BigEndianDataReader {
         (data as NSData).getBytes(&buffer, range: NSRange(location: index, length: length))
         index += length
         
-        return unsafeBitCast(UInt32(bigEndian: buffer), to: Float32.self)
+        return Float32(bitPattern: UInt32(bigEndian: buffer))
     }
     
     func getCString() -> String {
@@ -165,7 +165,6 @@ extension ImportedStrokes {
         let scale: CGFloat = 300
         
         let np = points.map { point in
-            
             return CGPoint(x: (point.x / max) * scale,
                            y: (point.y / max) * scale)
         }

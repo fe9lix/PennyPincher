@@ -1,5 +1,5 @@
 //
-//  PennyPincherImportedGestures.swift
+//  ImportedGestures.swift
 //  PennyPincher
 //
 //  Created by Raf Cabezas on 1/31/17.
