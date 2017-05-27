@@ -50,7 +50,8 @@ final class ViewController: UIViewController, UITextFieldDelegate {
     }
 }
 
-//MARK:- Actions
+// MARK: - Actions
+
 extension ViewController {
     @IBAction func didTapAddTemplate(_ sender: AnyObject) {
         guard let text = templateTextField.text, !text.isEmpty else {
@@ -73,12 +74,12 @@ extension ViewController {
     }
     
     @IBAction func didTapLoadAndroidData(_ sender: Any) {
-        guard let androidGesturesFileURL = PennyPincherAndroidGesturesImporter.defaultImportFileURL else {
+        guard let androidGesturesFileURL = AndroidGesturesImporter.defaultImportFileURL else {
             recognizerResultLabel.text = "File not found"
             return
         }
         
-        let importedGestures = PennyPincherAndroidGesturesImporter.translatedGestures(fromURL: androidGesturesFileURL)
+        let importedGestures = AndroidGesturesImporter.translatedGestures(from: androidGesturesFileURL)
         gestures.append(contentsOf: importedGestures)
         
         for gesture in importedGestures {
@@ -96,7 +97,8 @@ extension ViewController {
     }
 }
 
-//MARK:- TableView
+// MARK: - TableView
+
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return gestures.count
@@ -106,7 +108,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
         let gesture = gestures[indexPath.row]
 
-        cell.textLabel?.text = "\(gesture.id): strokes = \(gesture.strokes.count) total points = \(gesture.allPoints.count)"
+        cell.textLabel?.text = "\(gesture.id): strokes = \(gesture.strokes.count), total points = \(gesture.allPoints.count)"
         return cell
     }
     

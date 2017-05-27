@@ -142,7 +142,7 @@ class GestureView: UIView {
                     arcCenter:point,
                     radius: path.lineWidth * 3,
                     startAngle: 0.0,
-                    endAngle: CGFloat(M_PI) * 2,
+                    endAngle: .pi * 2,
                     clockwise: true)
                 )
             }
