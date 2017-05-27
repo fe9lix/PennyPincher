@@ -1,0 +1,18 @@
+{
+  "iOS" : [
+    {
+      "hash" : "ba5bb1a624c35cee1c8ebdaca7a8a810bb7a98b03b836f499af33b10ba56a732",
+      "name" : "PennyPincher"
+    }
+  ],
+  "commitish" : "1bae1b71a118e4b05723369f6e6ef743ccccd437",
+  "watchOS" : [
+
+  ],
+  "tvOS" : [
+
+  ],
+  "Mac" : [
+
+  ]
+}
